@@ -1,11 +1,7 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-     twitch doodles
-    </div>
-  );
-}
+const App = (): React.ReactElement => {
+  return <div className="App">Twitch doodles</div>;
+};
 
 export default App;
