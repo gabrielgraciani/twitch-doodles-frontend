@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Home = (): React.ReactElement => {
-  const { t, i18n } = useTranslation('common');
+  const { t, i18n } = useTranslation();
   return (
     <div>
       {t('welcome.title')}

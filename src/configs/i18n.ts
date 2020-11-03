@@ -1,17 +1,17 @@
 import i18next from 'i18next';
 
-import common_br from '../translations/br/commom.json';
-import common_en from '../translations/en/commom.json';
+import translation_br from '../translations/br/translation.json';
+import translation_en from '../translations/en/translation.json';
 
 i18next.init({
   interpolation: { escapeValue: false }, // React already does escaping
   lng: 'br', // language to use
   resources: {
     en: {
-      common: common_en, // 'common' is our custom namespace
+      translation: translation_en, // 'translation' is our custom namespace
     },
     br: {
-      common: common_br,
+      translation: translation_br,
     },
   },
 });
