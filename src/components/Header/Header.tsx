@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import { MdSettings } from 'react-icons/md';
 import FlagUSA from '../../assets/images/flags/USA.png';
@@ -45,9 +46,15 @@ const Header = (): React.ReactElement => {
         <SiteName>Twitch Doodles</SiteName>
 
         <MenuContainer>
-          <MenuItem>Classic</MenuItem>
-          <MenuItem>ASCII</MenuItem>
-          <MenuItem>Contact</MenuItem>
+          <MenuItem>
+            <Link to="/contact">Classic</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/contact">ASCII</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to="/contact">Contact</Link>
+          </MenuItem>
 
           <SettingsButton type="button" onClick={toggleTheme}>
             <MdSettings />

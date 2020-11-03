@@ -1,16 +1,19 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 import AppProvider from './hooks';
 
 import GlobalStyles from './styles/GlobalStyles';
-import { Home } from './Pages/Home';
+import Routes from './routes';
 
 const App = (): React.ReactElement => {
   return (
-    <AppProvider>
-      <Home />
-      <GlobalStyles />
-    </AppProvider>
+    <BrowserRouter>
+      <AppProvider>
+        <Routes />
+        <GlobalStyles />
+      </AppProvider>
+    </BrowserRouter>
   );
 };
 
