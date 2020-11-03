@@ -6,7 +6,6 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 0.9) !important;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
 
   background: ${props => props.theme.colors.backgroundHeader};
@@ -29,7 +28,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 10rem;
+  padding: 1rem 0rem;
 `;
 
 const SiteName = styled.h4`
@@ -58,7 +57,7 @@ const FlagsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 90%;
-  padding: 0.3rem 10rem;
+  padding: 0.3rem 0rem;
   max-width: 100rem;
 `;
 

@@ -7,6 +7,6 @@ export default {
 
     background: '#F9F9F9',
 
-    backgroundHeader: '#fff',
+    backgroundHeader: '#F9F9F9',
   },
 };
