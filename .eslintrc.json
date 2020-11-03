@@ -40,7 +40,8 @@
         }
      ],
      "no-use-before-define": "off",
-     "prettier/prettier": "error"
+     "prettier/prettier": "error",
+     "no-console": "off"
     },
     "settings": {
       "import/resolver": {

@@ -1,12 +1,4 @@
-import React, {
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
-  useState,
-  useCallback,
-} from 'react';
+import React, { createContext, useContext, useCallback } from 'react';
 import {
   ThemeProvider as ThemeProviderStyledComponents,
   DefaultTheme,
@@ -15,25 +7,7 @@ import {
 import light from '../styles/themes/light';
 import dark from '../styles/themes/dark';
 
-type Response<T> = [T, Dispatch<SetStateAction<T>>];
-
-function usePersistedState<T>(key: string, initialState: T): Response<T> {
-  const [state, setState] = useState(() => {
-    const storageValue = localStorage.getItem(key);
-
-    if (storageValue) {
-      return JSON.parse(storageValue);
-    }
-
-    return initialState;
-  });
-
-  useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]);
-
-  return [state, setState];
-}
+import usePersistedState from './usePersistedState';
 
 interface ThemeContextData {
   theme: unknown;

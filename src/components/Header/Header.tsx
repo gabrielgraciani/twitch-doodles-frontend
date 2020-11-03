@@ -23,14 +23,19 @@ const Header = (): React.ReactElement => {
   const { i18n } = useTranslation();
   const { toggleTheme } = useTheme();
 
+  const toggleLanguage = (lang: string) => {
+    localStorage.setItem('language', lang);
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <StyledHeader>
       <LanguageContainer>
         <FlagsContainer>
-          <FlagButton type="button" onClick={() => i18n.changeLanguage('br')}>
+          <FlagButton type="button" onClick={() => toggleLanguage('br')}>
             <img src={FlagBR} alt="Brasil" />
           </FlagButton>
-          <FlagButton type="button" onClick={() => i18n.changeLanguage('en')}>
+          <FlagButton type="button" onClick={() => toggleLanguage('en')}>
             <img src={FlagUSA} alt="United States Of America" />
           </FlagButton>
         </FlagsContainer>
