@@ -8,13 +8,15 @@ import FlagBR from '../../assets/images/flags/BR.png';
 import { useTheme } from '../../hooks/useTheme';
 
 import {
+  Header as StyledHeader,
+  LanguageContainer,
   Container,
   SiteName,
-  ContentContainer,
   MenuContainer,
   MenuItem,
   FlagsContainer,
   FlagButton,
+  SettingsButton,
 } from './Header.styles';
 
 const Header = (): React.ReactElement => {
@@ -22,14 +24,8 @@ const Header = (): React.ReactElement => {
   const { toggleTheme } = useTheme();
 
   return (
-    <Container>
-      <SiteName>Twitch Doodles</SiteName>
-
-      <ContentContainer>
-        <MenuContainer>
-          <MenuItem>teste</MenuItem>
-        </MenuContainer>
-
+    <StyledHeader>
+      <LanguageContainer>
         <FlagsContainer>
           <FlagButton type="button" onClick={() => i18n.changeLanguage('br')}>
             <img src={FlagBR} alt="Brasil" />
@@ -38,12 +34,22 @@ const Header = (): React.ReactElement => {
             <img src={FlagUSA} alt="United States Of America" />
           </FlagButton>
         </FlagsContainer>
-      </ContentContainer>
+      </LanguageContainer>
 
-      <button type="button" onClick={toggleTheme}>
-        <MdSettings />
-      </button>
-    </Container>
+      <Container>
+        <SiteName>Twitch Doodles</SiteName>
+
+        <MenuContainer>
+          <MenuItem>Classic</MenuItem>
+          <MenuItem>ASCII</MenuItem>
+          <MenuItem>Contact</MenuItem>
+
+          <SettingsButton type="button" onClick={toggleTheme}>
+            <MdSettings />
+          </SettingsButton>
+        </MenuContainer>
+      </Container>
+    </StyledHeader>
   );
 };
 

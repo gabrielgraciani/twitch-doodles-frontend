@@ -6,10 +6,10 @@ import { Header } from '../../components/Header';
 const Home = (): React.ReactElement => {
   const { t } = useTranslation();
   return (
-    <div>
+    <>
       <Header />
-      {t('welcome.title')}
-    </div>
+      <div style={{ marginTop: '82px' }}>{t('welcome.title')}</div>
+    </>
   );
 };
 
