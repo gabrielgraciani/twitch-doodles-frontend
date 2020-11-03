@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import FlagUSA from '../../assets/images/flags/USA.png';
+import FlagBR from '../../assets/images/flags/BR.png';
+
 const Home = (): React.ReactElement => {
   const { t, i18n } = useTranslation();
   return (
@@ -9,11 +12,11 @@ const Home = (): React.ReactElement => {
       <br />
       <br />
       <button type="button" onClick={() => i18n.changeLanguage('br')}>
-        br
+        <img src={FlagBR} alt="Brasil" />
       </button>
       <br />
       <button type="button" onClick={() => i18n.changeLanguage('en')}>
-        en
+        <img src={FlagUSA} alt="United States Of America" />
       </button>
     </div>
   );
