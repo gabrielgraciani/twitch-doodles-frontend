@@ -35,4 +35,8 @@ export default createGlobalStyle`
     background:transparent;
   }
 
+  ul, li{
+    list-style:none;
+  }
+
 `;
