@@ -1,8 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { MdSettings } from 'react-icons/md';
 import FlagUSA from '../../assets/images/flags/USA.png';
 import FlagBR from '../../assets/images/flags/BR.png';
+
+import { useTheme } from '../../hooks/useTheme';
 
 import {
   Container,
@@ -16,6 +19,7 @@ import {
 
 const Header = (): React.ReactElement => {
   const { i18n } = useTranslation();
+  const { toggleTheme } = useTheme();
 
   return (
     <Container>
@@ -35,6 +39,10 @@ const Header = (): React.ReactElement => {
           </FlagButton>
         </FlagsContainer>
       </ContentContainer>
+
+      <button type="button" onClick={toggleTheme}>
+        <MdSettings />
+      </button>
     </Container>
   );
 };
