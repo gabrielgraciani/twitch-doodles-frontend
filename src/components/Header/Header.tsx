@@ -43,7 +43,9 @@ const Header = (): React.ReactElement => {
       </LanguageContainer>
 
       <Container>
-        <SiteName>Twitch Doodles</SiteName>
+        <Link to="/">
+          <SiteName>Twitch Doodles</SiteName>
+        </Link>
 
         <MenuContainer>
           <MenuItem>

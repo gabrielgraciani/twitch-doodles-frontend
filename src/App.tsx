@@ -4,13 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import AppProvider from './hooks';
 
 import GlobalStyles from './styles/GlobalStyles';
-import Routes from './routes';
+import { Layout } from './Layout';
 
 const App = (): React.ReactElement => {
   return (
     <BrowserRouter>
       <AppProvider>
-        <Routes />
+        <Layout />
         <GlobalStyles />
       </AppProvider>
     </BrowserRouter>
