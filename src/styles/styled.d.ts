@@ -11,6 +11,8 @@ declare module 'styled-components' {
       background: string;
 
       backgroundHeader: string;
+
+      boxShadow02: string;
     };
   }
 }

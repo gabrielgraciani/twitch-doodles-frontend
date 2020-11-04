@@ -1,7 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import 'antd/dist/antd.css';
 
 export default createGlobalStyle`
-  * {
+  *, *::after, *::before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,11 +10,11 @@ export default createGlobalStyle`
   html{
     font-size: 62.5%;
   }
+
   html, body, #root {
     height: 100%;
     background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.primary}
-
+    color: ${props => props.theme.colors.primary};
   }
 
   #root{
@@ -36,12 +37,24 @@ export default createGlobalStyle`
     background:transparent;
   }
 
-  ul, li{
+  ol, ul, li{
     list-style:none;
+    margin:0;
   }
 
   a{
     text-decoration:none;
+    color: ${props => props.theme.colors.primary};
+    transition:0s;
+
+    &:active, &:focus, &:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  h1,h2,h3,h4,h5,h6{
+    margin:0;
   }
 
 `;

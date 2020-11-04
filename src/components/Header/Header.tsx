@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { Popover, Switch } from 'antd';
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
-import { MdSettings } from 'react-icons/md';
+import { FiSettings, FiMoon } from 'react-icons/fi';
 import FlagUSA from '../../assets/images/flags/USA.png';
 import FlagBR from '../../assets/images/flags/BR.png';
 
@@ -18,16 +20,42 @@ import {
   FlagsContainer,
   FlagButton,
   SettingsButton,
+  PopoverContainer,
+  PopoverItem,
+  PopoverGlobalStyles,
 } from './Header.styles';
 
 const Header = (): React.ReactElement => {
   const { i18n } = useTranslation();
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, theme } = useTheme();
+  console.log('theme', theme);
+
+  const [isActive, setIsActive] = useState(false);
 
   const toggleLanguage = (lang: string) => {
     localStorage.setItem('language', lang);
     i18n.changeLanguage(lang);
   };
+
+  const handleChangeVisiblePopover = () => {
+    setIsActive(!isActive);
+  };
+
+  const popoverContent = (
+    <PopoverContainer>
+      <PopoverItem>
+        <FiMoon />
+        <span>Tema escuro</span>
+
+        <Switch
+          checkedChildren={<CheckOutlined />}
+          unCheckedChildren={<CloseOutlined />}
+          defaultChecked={theme.title === 'dark'}
+          onClick={toggleTheme}
+        />
+      </PopoverItem>
+    </PopoverContainer>
+  );
 
   return (
     <StyledHeader>
@@ -58,11 +86,22 @@ const Header = (): React.ReactElement => {
             <Link to="/contact">Contact</Link>
           </MenuItem>
 
-          <SettingsButton type="button" onClick={toggleTheme}>
-            <MdSettings />
+          <SettingsButton type="button">
+            <Popover
+              content={popoverContent}
+              title="Configurações"
+              trigger="click"
+              visible={isActive}
+              placement="bottomRight"
+              onVisibleChange={handleChangeVisiblePopover}
+            >
+              <FiSettings />
+            </Popover>
           </SettingsButton>
         </MenuContainer>
       </Container>
+
+      <PopoverGlobalStyles />
     </StyledHeader>
   );
 };

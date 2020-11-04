@@ -10,7 +10,7 @@ import dark from '../styles/themes/dark';
 import usePersistedState from './usePersistedState';
 
 interface ThemeContextData {
-  theme: unknown;
+  theme: DefaultTheme;
   toggleTheme: () => void;
 }
 

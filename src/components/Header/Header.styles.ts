@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const Header = styled.header`
   width: 100%;
@@ -6,7 +6,8 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.1rem 0.2rem ${props => props.theme.colors.boxShadow02},
+    0 0 0.2rem ${props => props.theme.colors.boxShadow02};
 
   background: ${props => props.theme.colors.backgroundHeader};
   position: fixed;
@@ -74,9 +75,52 @@ const FlagButton = styled.button`
 `;
 
 const SettingsButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   svg {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
+`;
+
+const PopoverContainer = styled.div``;
+
+const PopoverItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > svg {
+    font-size: 2rem;
+    margin-right: 0.8rem;
+  }
+`;
+
+const PopoverGlobalStyles = createGlobalStyle`
+.ant-popover-inner{
+  background: ${props => props.theme.colors.backgroundHeader};
+  svg path{color:${props => props.theme.colors.primary};}
+
+  box-shadow: 0 0.1rem 0.2rem ${props =>
+    props.theme.colors.boxShadow02}, 0 0 0.2rem ${props =>
+  props.theme.colors.boxShadow02};
+}
+
+.ant-popover-title{
+  color: ${props => props.theme.colors.primary};
+}
+
+.ant-switch{
+  background:#b9a3e3;
+  margin-left:5rem;
+}
+
+.ant-switch-checked{
+  background: #6441a5;
+}
+
+
 `;
 
 export {
@@ -89,4 +133,7 @@ export {
   FlagsContainer,
   FlagButton,
   SettingsButton,
+  PopoverContainer,
+  PopoverItem,
+  PopoverGlobalStyles,
 };

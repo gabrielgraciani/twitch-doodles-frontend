@@ -8,5 +8,7 @@ export default {
     background: '#F9F9F9',
 
     backgroundHeader: '#F9F9F9',
+
+    boxShadow02: 'rgba(0, 0, 0, 0.2)',
   },
 };
