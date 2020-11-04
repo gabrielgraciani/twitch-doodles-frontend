@@ -17,6 +17,7 @@ const Card = (): React.ReactElement => {
   const handleChangeActiveCopyToClipboard = () => {
     setIsActiveCopyToClipboard(!isActiveCopyToClipboard);
   };
+
   return (
     <StyledCard
       onMouseEnter={handleChangeActiveCopyToClipboard}
@@ -46,9 +47,9 @@ const Card = (): React.ReactElement => {
         </CardShareButton>
       </CardFooter>
 
-      {isActiveCopyToClipboard && (
-        <CopyToClipboard>Copy to clipboard</CopyToClipboard>
-      )}
+      <CopyToClipboard className={isActiveCopyToClipboard ? 'active' : ''}>
+        Copy to clipboard
+      </CopyToClipboard>
     </StyledCard>
   );
 };

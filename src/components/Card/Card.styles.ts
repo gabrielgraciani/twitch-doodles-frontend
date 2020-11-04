@@ -31,31 +31,6 @@ const StyledCard = styled.div`
   overflow: hidden;
   transition: all 0.3s ease;
 
-  &:after {
-    transition: all 0.5s ease;
-    content: '';
-    position: absolute;
-    top: -110%;
-    left: -210%;
-    width: 200%;
-    height: 200%;
-    transform: rotate(30deg);
-    background: rgba(255, 255, 255, 0.13);
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0) 77%,
-      rgba(255, 255, 255, 0.5) 92%,
-      rgba(255, 255, 255, 0) 100%
-    );
-  }
-
-  &:hover:after {
-    transition: all 0.5s ease;
-    top: -30%;
-    left: -30%;
-  }
-
   &:hover {
     transform: translateY(-0.7rem);
     box-shadow: 0 0 1rem -0.5rem ${props => props.theme.colors.purpleLight};
@@ -120,6 +95,14 @@ const CopyToClipboard = styled.div`
   padding: 0.6rem 1rem;
   text-align: center;
   font-size: 1.6rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateY(100%);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 `;
 
 export {
