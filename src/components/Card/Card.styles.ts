@@ -33,6 +33,7 @@ const StyledCard = styled.div`
 
   &:hover {
     transform: translateY(-0.7rem);
+    cursor: pointer;
     box-shadow: 0 0 1rem -0.5rem ${props => props.theme.colors.purpleLight};
   }
 `;
