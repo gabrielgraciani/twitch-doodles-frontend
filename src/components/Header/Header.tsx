@@ -28,9 +28,8 @@ import {
 const Header = (): React.ReactElement => {
   const { i18n, t } = useTranslation();
   const { toggleTheme, theme } = useTheme();
-  console.log('theme', theme);
 
-  const [isActive, setIsActive] = useState(false);
+  const [isPopoverActive, setIsPopoverActive] = useState(false);
 
   const toggleLanguage = (lang: string) => {
     localStorage.setItem('language', lang);
@@ -38,7 +37,7 @@ const Header = (): React.ReactElement => {
   };
 
   const handleChangeVisiblePopover = () => {
-    setIsActive(!isActive);
+    setIsPopoverActive(!isPopoverActive);
   };
 
   const popoverContent = (
@@ -91,7 +90,7 @@ const Header = (): React.ReactElement => {
               content={popoverContent}
               title={t('header.settings')}
               trigger="click"
-              visible={isActive}
+              visible={isPopoverActive}
               placement="bottomRight"
               onVisibleChange={handleChangeVisiblePopover}
             >
