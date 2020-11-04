@@ -20,7 +20,7 @@ const LanguageContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  background: #b9a3e3;
+  background: ${props => props.theme.colors.purpleLight};
 `;
 
 const Container = styled.div`
@@ -29,11 +29,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0rem;
 `;
 
 const SiteName = styled.h4`
-  color: #6441a5;
+  color: ${props => props.theme.colors.purple};
   font-size: 2rem;
 `;
 
@@ -48,6 +47,7 @@ const MenuItem = styled.li`
   font-size: 1.7rem;
   color: ${props => props.theme.colors.primary};
   margin-right: 3rem;
+  padding: 1rem 0rem;
 
   &:last-child {
     margin-right: 0;
@@ -112,12 +112,23 @@ const PopoverGlobalStyles = createGlobalStyle`
 }
 
 .ant-switch{
-  background:#b9a3e3;
+  background:${props => props.theme.colors.purpleLight};
   margin-left:5rem;
 }
 
 .ant-switch-checked{
-  background: #6441a5;
+  background: ${props => props.theme.colors.purple};
+}
+
+.ant-popover-arrow{
+  border-top-color: ${props =>
+    props.theme.title === 'dark'
+      ? `${props.theme.colors.purpleLight} !important`
+      : '#fff'};
+  border-left-color: ${props =>
+    props.theme.title === 'dark'
+      ? `${props.theme.colors.purpleLight} !important`
+      : '#fff'};
 }
 
 

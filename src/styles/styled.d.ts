@@ -13,6 +13,9 @@ declare module 'styled-components' {
       backgroundHeader: string;
 
       boxShadow02: string;
+
+      purple: string;
+      purpleLight: string;
     };
   }
 }

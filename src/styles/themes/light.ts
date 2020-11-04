@@ -10,5 +10,8 @@ export default {
     backgroundHeader: '#F9F9F9',
 
     boxShadow02: 'rgba(0, 0, 0, 0.2)',
+
+    purple: '#6441a5',
+    purpleLight: '#b9a3e3',
   },
 };
