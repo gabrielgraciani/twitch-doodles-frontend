@@ -25,7 +25,7 @@ const LanguageContainer = styled.div`
 
 const Container = styled.div`
   width: 90%;
-  max-width: 100rem;
+  max-width: 110rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,7 +69,7 @@ const FlagsContainer = styled.div`
   justify-content: flex-end;
   width: 90%;
   padding: 0.3rem 0rem;
-  max-width: 100rem;
+  max-width: 110rem;
 `;
 
 const FlagButton = styled.button`

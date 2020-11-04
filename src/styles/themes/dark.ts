@@ -13,5 +13,7 @@ export default {
 
     purple: '#6441a5',
     purpleLight: '#b9a3e3',
+
+    cardBackground: '#1f1f23',
   },
 };

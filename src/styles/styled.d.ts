@@ -16,6 +16,8 @@ declare module 'styled-components' {
 
       purple: string;
       purpleLight: string;
+
+      cardBackground: string;
     };
   }
 }
