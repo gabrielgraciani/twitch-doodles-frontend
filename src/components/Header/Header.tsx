@@ -26,7 +26,7 @@ import {
 } from './Header.styles';
 
 const Header = (): React.ReactElement => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { toggleTheme, theme } = useTheme();
   console.log('theme', theme);
 
@@ -45,7 +45,7 @@ const Header = (): React.ReactElement => {
     <PopoverContainer>
       <PopoverItem>
         <FiMoon />
-        <span>Tema escuro</span>
+        {t('header.darkTheme')}
 
         <Switch
           checkedChildren={<CheckOutlined />}
@@ -62,34 +62,34 @@ const Header = (): React.ReactElement => {
       <LanguageContainer>
         <FlagsContainer>
           <FlagButton type="button" onClick={() => toggleLanguage('br')}>
-            <img src={FlagBR} alt="Brasil" />
+            <img src={FlagBR} alt={t('header.flags.brazil')} />
           </FlagButton>
           <FlagButton type="button" onClick={() => toggleLanguage('en')}>
-            <img src={FlagUSA} alt="United States Of America" />
+            <img src={FlagUSA} alt={t('header.flags.united')} />
           </FlagButton>
         </FlagsContainer>
       </LanguageContainer>
 
       <Container>
         <Link to="/">
-          <SiteName>Twitch Doodles</SiteName>
+          <SiteName>{t('siteName')}</SiteName>
         </Link>
 
         <MenuContainer>
           <MenuItem>
-            <Link to="/contact">Classic</Link>
+            <Link to="/contact">{t('header.menu.contact')}</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/contact">ASCII</Link>
+            <Link to="/contact">{t('header.menu.contact')}</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact">{t('header.menu.contact')}</Link>
           </MenuItem>
 
           <SettingsButton type="button">
             <Popover
               content={popoverContent}
-              title="Configurações"
+              title={t('header.settings')}
               trigger="click"
               visible={isActive}
               placement="bottomRight"

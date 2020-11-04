@@ -47,10 +47,20 @@ const MenuItem = styled.li`
   font-size: 1.7rem;
   color: ${props => props.theme.colors.primary};
   margin-right: 3rem;
-  padding: 1rem 0rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid transparent;
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.purpleLight};
+    border-bottom: 1px solid ${props => props.theme.colors.purpleLight};
+  }
+
+  a {
+    padding: 1rem 0;
   }
 `;
 

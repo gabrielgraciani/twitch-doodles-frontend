@@ -1,5 +1,19 @@
 {
-  "welcome": {
-      "title": "Welcome to twitch doodles"
+  "siteName": "Twitch Doodles",
+  "header": {
+    "menu": {
+      "contact": "Contact"
+    },
+    "settings": "Settings",
+    "darkTheme": "Dark Theme",
+    "flags": {
+      "brazil": "Brazil",
+      "united": "United States of America"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "initial page"
+    }
   }
 }
