@@ -28,7 +28,7 @@ const Container = styled.div`
 
 const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   justify-content: space-between;
   grid-row-gap: 2.5rem;
   grid-column-gap: 3%;
@@ -41,6 +41,39 @@ const Card = styled.div`
   background: ${props => props.theme.colors.cardBackground};
   border-radius: 0.5rem;
   padding: 1rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:after {
+    transition: all 0.5s ease;
+    content: '';
+    position: absolute;
+    top: -110%;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    transform: rotate(30deg);
+    background: rgba(255, 255, 255, 0.13);
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 77%,
+      rgba(255, 255, 255, 0.5) 92%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  &:hover:after {
+    transition: all 0.5s ease;
+    top: -30%;
+    left: -30%;
+  }
+
+  &:hover {
+    transform: translateY(-0.7rem);
+    box-shadow: 0 0 1rem -0.5rem ${props => props.theme.colors.purpleLight};
+  }
 `;
 
 const CardHeader = styled.div`
