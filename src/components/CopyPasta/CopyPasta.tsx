@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { format } from 'date-fns';
+import { ptBR, enUS } from 'date-fns/locale';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
 
 import { CopyPastaProps } from './CopyPasta.types';
@@ -11,14 +13,24 @@ import {
   UserName,
   CopyPastaShareButton,
   CopyToClipboard,
+  CopyPastaDate,
 } from './CopyPasta.styles';
 
 const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
+  const language = localStorage.getItem('language');
 
   const handleChangeActiveCopyToClipboard = () => {
     setIsActiveCopyToClipboard(!isActiveCopyToClipboard);
   };
+
+  const date = format(
+    new Date(copyPasta.date),
+    " iiii',' dd 'de' MMMM 'de' y",
+    {
+      locale: language === 'br' ? ptBR : enUS,
+    },
+  );
 
   return (
     <StyledCopyPasta
@@ -28,21 +40,15 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       <CopyPastaHeader>{copyPasta.name}</CopyPastaHeader>
       <CopyPastaContent>
         <UserName>twitchUser: </UserName>
-        {/* ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⣴⣶⣶⣦⡄⠀⠀⠀⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⣤⡄⠀⠀⠉⠛⠻⠟⠃⠀⠀⣿⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠈⠀⠰⣦⣤⣤⡆⢀⡀⠸⢷⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⠀⠀⢠⣭⣿⡁⠈⣁⠀⠸⣿⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠀⠀⢰⣦⢸⣿⠟⢃⣼⣿⠇⢠⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⣶⠀⢸⣿⣷⣿⣷⡀⠻⡿⠀⣾⣿⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⢀⣾⠟⠀⠘⢿⣿⣿⣿⣧⠀⠀⠸⢿⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀⣴⣿⣿⠀⠀⠀⠀⣿⣿⣿⣿⠃⠀⠀⠘⠻⠿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⢀⣼⣿⣿⣿⣄⣀⣀⣠⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀
-        ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡦⠀⠀⢀⣤⣤ ⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢸⣿⣿
-        ⣿⣿⣿⣿⣿⣿⣿⠃⠀⠠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢸⣿⣿ ⣿⣿⣿⣿⡿⠋⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀ ⠈⠹⢿
-        ⣿⣿⣿⣿⣀⣀⣀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⣸ */}
         {copyPasta.content}
       </CopyPastaContent>
+
+      <CopyPastaDate>{date}</CopyPastaDate>
+
       <CopyPastaFooter>
         <CopyPastaShareButton>
           <FiFacebook />
           Share
-          {copyPasta.date}
         </CopyPastaShareButton>
 
         <CopyPastaShareButton socialType="twitter">

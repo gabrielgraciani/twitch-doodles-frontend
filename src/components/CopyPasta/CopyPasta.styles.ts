@@ -50,6 +50,7 @@ const CopyPastaContent = styled.div`
   font-size: 1.2rem;
   flex-direction: column;
   margin-bottom: 2rem;
+  flex-grow: 1;
 `;
 
 const UserName = styled.span`
@@ -106,6 +107,16 @@ const CopyToClipboard = styled.div`
   }
 `;
 
+const CopyPastaDate = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.secundary};
+`;
+
 export {
   StyledCopyPasta,
   CopyPastaHeader,
@@ -114,4 +125,5 @@ export {
   CopyPastaFooter,
   CopyPastaShareButton,
   CopyToClipboard,
+  CopyPastaDate,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactQueryDevtools } from 'react-query-devtools';
+// import { ReactQueryDevtools } from 'react-query-devtools';
 
 import useCopyPastas from '../../hooks/useCopyPastas';
 
@@ -17,7 +17,7 @@ const Home = (): React.ReactElement => {
         ))}
       </CardsContainer>
 
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </Container>
   );
 };
