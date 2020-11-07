@@ -18,6 +18,9 @@ declare module 'styled-components' {
       purpleLight: string;
 
       cardBackground: string;
+
+      inputBorderColor: string;
+      inputBorderColorActive: string;
     };
   }
 }

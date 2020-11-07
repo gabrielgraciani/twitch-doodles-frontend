@@ -15,5 +15,8 @@ export default {
     purpleLight: '#b9a3e3',
 
     cardBackground: '#EFEFF1',
+
+    inputBorderColor: 'rgba(0, 0, 0, 0.23)',
+    inputBorderColorActive: '#1976d2',
   },
 };

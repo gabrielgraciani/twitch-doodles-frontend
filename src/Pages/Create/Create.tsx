@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { Input } from '../../components/Input';
+
+import { Container, Title, Form } from './Create.styles';
 
 const Create = (): React.ReactElement => {
-  return <div>create</div>;
+  const [value, setValue] = useState('');
+
+  return (
+    <Container>
+      <Title>Contribute to the TwitchDoodles copypasta database.</Title>
+
+      <Form>
+        <Input
+          name="name"
+          placeholder="Doodle's name"
+          value={value}
+          onChange={val => setValue(val)}
+        />
+      </Form>
+    </Container>
+  );
 };
 
 export default Create;
