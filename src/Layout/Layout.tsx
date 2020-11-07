@@ -2,14 +2,18 @@ import React from 'react';
 
 import Routes from '../routes';
 import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
 
-import { Container } from './Layout.styles';
+import { Container, Content } from './Layout.styles';
 
 const Layout = (): React.ReactElement => {
   return (
     <Container>
       <Header />
-      <Routes />
+      <Content>
+        <Routes />
+      </Content>
+      <Footer />
     </Container>
   );
 };

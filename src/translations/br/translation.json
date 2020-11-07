@@ -2,6 +2,7 @@
   "siteName": "Twitch Doodles",
   "header": {
     "menu": {
+      "ascii": "ASCII Arte",
       "contact": "Contato"
     },
     "settings": "Configurações",
@@ -10,6 +11,10 @@
       "brazil": "Brasil",
       "united": "Estados Unidos da América"
     }
+  },
+  "footer": {
+    "copyRight": " © Copyright {{year}} TwitchDoodles - Todos os direitos reservados.",
+    "createdBy": "Criado por Gabriel Thomaz Graciani"
   },
   "pages": {
     "home": {

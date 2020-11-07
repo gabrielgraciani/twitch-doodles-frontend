@@ -8,4 +8,11 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export { Container };
+const Content = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export { Container, Content };
