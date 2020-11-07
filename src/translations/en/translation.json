@@ -2,8 +2,9 @@
   "siteName": "Twitch Doodles",
   "header": {
     "menu": {
-      "ascii": "ASCII Art",
-      "contact": "Contact"
+      "ascii": "ASCII Doodles",
+      "contact": "Contact",
+      "create": "Create doodle"
     },
     "settings": "Settings",
     "darkTheme": "Dark Theme",
