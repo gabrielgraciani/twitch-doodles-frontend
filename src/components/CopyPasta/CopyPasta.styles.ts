@@ -21,7 +21,7 @@ const buttonTypeVariations = {
   `,
 };
 
-const StyledCard = styled.div`
+const StyledCopyPasta = styled.div`
   display: flex;
   flex-direction: column;
   background: ${props => props.theme.colors.cardBackground};
@@ -38,14 +38,14 @@ const StyledCard = styled.div`
   }
 `;
 
-const CardHeader = styled.div`
+const CopyPastaHeader = styled.div`
   display: flex;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
 `;
 
-const CardContent = styled.div`
+const CopyPastaContent = styled.div`
   display: flex;
   font-size: 1.2rem;
   flex-direction: column;
@@ -56,13 +56,13 @@ const UserName = styled.span`
   color: ${props => props.theme.colors.purple};
 `;
 
-const CardFooter = styled.div`
+const CopyPastaFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const CardShareButton = styled.button<ShareButtonProps>`
+const CopyPastaShareButton = styled.button<ShareButtonProps>`
   padding: 0.2rem 0.5rem;
   display: flex;
   align-items: center;
@@ -107,11 +107,11 @@ const CopyToClipboard = styled.div`
 `;
 
 export {
-  StyledCard,
-  CardHeader,
-  CardContent,
+  StyledCopyPasta,
+  CopyPastaHeader,
+  CopyPastaContent,
   UserName,
-  CardFooter,
-  CardShareButton,
+  CopyPastaFooter,
+  CopyPastaShareButton,
   CopyToClipboard,
 };

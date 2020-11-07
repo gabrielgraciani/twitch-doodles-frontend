@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
 
-import CopyPasta from '../../interfaces/CopyPasta';
+import { CopyPastaProps } from './CopyPasta.types';
 
 import {
-  StyledCard,
-  CardHeader,
-  CardContent,
-  CardFooter,
+  StyledCopyPasta,
+  CopyPastaHeader,
+  CopyPastaContent,
+  CopyPastaFooter,
   UserName,
-  CardShareButton,
+  CopyPastaShareButton,
   CopyToClipboard,
-} from './Card.styles';
+} from './CopyPasta.styles';
 
-const Card = ({
-  name,
-  content,
-  date,
-}: Omit<CopyPasta, 'id'>): React.ReactElement => {
+const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
 
   const handleChangeActiveCopyToClipboard = () => {
@@ -25,12 +21,12 @@ const Card = ({
   };
 
   return (
-    <StyledCard
+    <StyledCopyPasta
       onMouseEnter={handleChangeActiveCopyToClipboard}
       onMouseLeave={handleChangeActiveCopyToClipboard}
     >
-      <CardHeader>{name}</CardHeader>
-      <CardContent>
+      <CopyPastaHeader>{copyPasta.name}</CopyPastaHeader>
+      <CopyPastaContent>
         <UserName>twitchUser: </UserName>
         {/* ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⣴⣶⣶⣦⡄⠀⠀⠀⣿
         ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⣤⡄⠀⠀⠉⠛⠻⠟⠃⠀⠀⣿⣿ ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⠀⠈⠀⠰⣦⣤⣤⡆⢀⡀⠸⢷⣿⣿
@@ -40,25 +36,25 @@ const Card = ({
         ⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡦⠀⠀⢀⣤⣤ ⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢸⣿⣿
         ⣿⣿⣿⣿⣿⣿⣿⠃⠀⠠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⢸⣿⣿ ⣿⣿⣿⣿⡿⠋⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀ ⠈⠹⢿
         ⣿⣿⣿⣿⣀⣀⣀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⣸ */}
-        {content}
-      </CardContent>
-      <CardFooter>
-        <CardShareButton>
+        {copyPasta.content}
+      </CopyPastaContent>
+      <CopyPastaFooter>
+        <CopyPastaShareButton>
           <FiFacebook />
           Share
-          {date}
-        </CardShareButton>
+          {copyPasta.date}
+        </CopyPastaShareButton>
 
-        <CardShareButton socialType="twitter">
+        <CopyPastaShareButton socialType="twitter">
           <FiTwitter />
           Share
-        </CardShareButton>
-      </CardFooter>
+        </CopyPastaShareButton>
+      </CopyPastaFooter>
 
       <CopyToClipboard className={isActiveCopyToClipboard ? 'active' : ''}>
         Copy to clipboard
       </CopyToClipboard>
-    </StyledCard>
+    </StyledCopyPasta>
   );
 };
 

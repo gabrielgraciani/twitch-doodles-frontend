@@ -3,7 +3,7 @@ import { ReactQueryDevtools } from 'react-query-devtools';
 
 import useCopyPastas from '../../hooks/useCopyPastas';
 
-import { Card } from '../../components/Card';
+import { CopyPasta } from '../../components/CopyPasta';
 import { Container, CardsContainer } from './Home.styles';
 
 const Home = (): React.ReactElement => {
@@ -13,12 +13,7 @@ const Home = (): React.ReactElement => {
     <Container>
       <CardsContainer>
         {copyPastas?.map(copyPasta => (
-          <Card
-            key={copyPasta.id}
-            name={copyPasta.name}
-            content={copyPasta.content}
-            date={copyPasta.date}
-          />
+          <CopyPasta key={copyPasta.id} copyPasta={copyPasta} />
         ))}
       </CardsContainer>
 
