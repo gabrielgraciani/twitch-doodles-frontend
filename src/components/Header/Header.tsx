@@ -79,7 +79,7 @@ const Header = (): React.ReactElement => {
             <Link to="/contact">{t('header.menu.ascii')}</Link>
           </MenuItem>
           <MenuItem>
-            <Link to="/contact">{t('header.menu.create')}</Link>
+            <Link to="/create">{t('header.menu.create')}</Link>
           </MenuItem>
           <MenuItem>
             <Link to="/contact">{t('header.menu.contact')}</Link>
