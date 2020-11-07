@@ -13,6 +13,8 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+
+  z-index: 999;
 `;
 
 const LanguageContainer = styled.div`
