@@ -1,7 +1,7 @@
 const asciiXDots = 2;
 const asciiYDots = 4;
 
-const threshold = 50;
+let threshold = 127;
 const asciiWidth = 30;
 let asciiHeight;
 
@@ -9,14 +9,28 @@ interface ImageBraileProps {
   width: number;
   height: number;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: Uint8ClampedArray;
 }
 
-export default function CreateAscii(image: HTMLImageElement): string {
+let imageTeste: HTMLImageElement;
+
+export function setImage(image: HTMLImageElement): void {
+  imageTeste = image;
+
+  CreateAscii();
+}
+
+export function setThreshHold(val: number): void {
+  threshold = val;
+  CreateAscii();
+}
+
+export function CreateAscii(): string {
   const ascii: string[] = [];
 
   asciiHeight = Math.ceil(
-    (asciiWidth * asciiXDots * (image.height / image.width)) / asciiYDots,
+    (asciiWidth * asciiXDots * (imageTeste.height / imageTeste.width)) /
+      asciiYDots,
   );
 
   const canvas = document.createElement('canvas');
@@ -26,7 +40,7 @@ export default function CreateAscii(image: HTMLImageElement): string {
   canvas.width = asciiWidth * asciiXDots;
   canvas.height = asciiHeight * asciiYDots;
 
-  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  context.drawImage(imageTeste, 0, 0, canvas.width, canvas.height);
 
   for (let y = 0; y < canvas.height; y += asciiYDots) {
     let line = '';
@@ -53,7 +67,6 @@ function ImageDataBraille(data: ImageBraileProps): string {
     dots[i] = data.data.subarray(i * 4, (i + 1) * 4);
   }
 
-  // Reorder dots to match Braille dot order
   dots = [
     dots[0],
     dots[2],
@@ -68,11 +81,6 @@ function ImageDataBraille(data: ImageBraileProps): string {
   dots = dots
     .map(([r, g, b]) => (r + g + b) / 3)
     .map(grey => +(grey < threshold));
-
-  // Braille Unicode range starts at U2800 (= 10240 decimal)
-  // Each of the eight dots is mapped to a bit in a byte which
-  // determines its position in the range.
-  // https://en.wikipedia.org/wiki/Braille_Patterns
 
   return String.fromCharCode(10240 + parseInt(dots.reverse().join(''), 2));
 }

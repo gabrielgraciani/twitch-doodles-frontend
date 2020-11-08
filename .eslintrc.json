@@ -44,7 +44,8 @@
      "no-console": "off",
      "import/no-duplicates": "off",
      "no-shadow": "off",
-     "@typescript-eslint/no-empty-function": "off"
+     "@typescript-eslint/no-empty-function": "off",
+     "react/no-danger": "off"
     },
     "settings": {
       "import/resolver": {
