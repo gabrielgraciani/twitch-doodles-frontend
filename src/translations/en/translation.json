@@ -21,5 +21,11 @@
     "home": {
       "title": "initial page"
     }
+  },
+  "copyPasta": {
+    "user": "twitchUser",
+    "share": "Share",
+    "copyToClipboard": "Copy to clipboard",
+    "copiedToClipboard": "Copied!"
   }
 }

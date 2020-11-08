@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { ptBR, enUS } from 'date-fns/locale';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
@@ -18,28 +19,42 @@ import {
 
 const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
+  const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const language = localStorage.getItem('language');
+
+  const { t } = useTranslation();
 
   const handleChangeActiveCopyToClipboard = () => {
     setIsActiveCopyToClipboard(!isActiveCopyToClipboard);
   };
 
-  const date = format(
-    new Date(copyPasta.date),
-    " iiii',' dd 'de' MMMM 'de' y",
-    {
-      locale: language === 'br' ? ptBR : enUS,
-    },
-  );
+  const handleCopyToClipboard = (content: string) => {
+    if (!isCopyingToClipboard) {
+      navigator.clipboard.writeText(content);
+
+      setIsCopyingToClipboard(true);
+      setTimeout(() => {
+        setIsCopyingToClipboard(false);
+      }, [2000]);
+    }
+  };
+
+  const formatDateText =
+    language === 'br' ? "iiii',' dd 'de' MMMM 'de' y" : "iiii',' MMMM dd',' y";
+
+  const date = format(new Date(copyPasta.date), formatDateText, {
+    locale: language === 'br' ? ptBR : enUS,
+  });
 
   return (
     <StyledCopyPasta
       onMouseEnter={handleChangeActiveCopyToClipboard}
       onMouseLeave={handleChangeActiveCopyToClipboard}
+      onClick={() => handleCopyToClipboard(copyPasta.content)}
     >
       <CopyPastaHeader>{copyPasta.name}</CopyPastaHeader>
       <CopyPastaContent>
-        <UserName>twitchUser: </UserName>
+        <UserName>{`${t('copyPasta.user')}: `}</UserName>
         {copyPasta.content}
       </CopyPastaContent>
 
@@ -48,17 +63,19 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       <CopyPastaFooter>
         <CopyPastaShareButton>
           <FiFacebook />
-          Share
+          {t('copyPasta.share')}
         </CopyPastaShareButton>
 
         <CopyPastaShareButton socialType="twitter">
           <FiTwitter />
-          Share
+          {t('copyPasta.share')}
         </CopyPastaShareButton>
       </CopyPastaFooter>
 
       <CopyToClipboard className={isActiveCopyToClipboard ? 'active' : ''}>
-        Copy to clipboard
+        {isCopyingToClipboard
+          ? t('copyPasta.copiedToClipboard')
+          : t('copyPasta.copyToClipboard')}
       </CopyToClipboard>
     </StyledCopyPasta>
   );

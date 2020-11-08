@@ -3,11 +3,23 @@ import React, { useState } from 'react';
 import { Input } from '../../components/Input';
 import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
+import api from '../../services/api';
 
 import { Container, Title, Form, FormItem } from './Create.styles';
 
 const Create = (): React.ReactElement => {
-  const [value, setValue] = useState('');
+  const [nameValue, setNameValue] = useState('');
+  const [contentValue, setContentValue] = useState('');
+
+  const handleSubmitForm = async () => {
+    const teste = await api.post('/copypastas', {
+      name: nameValue,
+      content: contentValue,
+      date: new Date(),
+    });
+
+    console.log('teste', teste);
+  };
 
   return (
     <Container>
@@ -18,8 +30,8 @@ const Create = (): React.ReactElement => {
           <Input
             name="name"
             placeholder="Doodle's name (optional)"
-            value={value}
-            onChange={val => setValue(val)}
+            value={nameValue}
+            onChange={val => setNameValue(val)}
           />
         </FormItem>
 
@@ -27,12 +39,12 @@ const Create = (): React.ReactElement => {
           <TextArea
             name="name"
             placeholder="Doodle's content"
-            value={value}
-            onChange={val => setValue(val)}
+            value={contentValue}
+            onChange={val => setContentValue(val)}
           />
         </FormItem>
 
-        <Button>Create</Button>
+        <Button onClick={handleSubmitForm}>Create</Button>
       </Form>
     </Container>
   );
