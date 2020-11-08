@@ -42,7 +42,8 @@
      "no-use-before-define": "off",
      "prettier/prettier": "error",
      "no-console": "off",
-     "import/no-duplicates": "off"
+     "import/no-duplicates": "off",
+     "no-shadow": "off"
     },
     "settings": {
       "import/resolver": {

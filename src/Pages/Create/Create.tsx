@@ -12,7 +12,7 @@ const Create = (): React.ReactElement => {
     <Container>
       <Title>Contribute to the TwitchDoodles copypasta database.</Title>
 
-      <Form>
+      <Form autoComplete="off">
         <Input
           name="name"
           placeholder="Doodle's name"

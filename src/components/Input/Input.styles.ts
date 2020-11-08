@@ -20,6 +20,12 @@ const StyledInput = styled.input`
   background: transparent;
   font-size: 1.4rem;
   padding: 1rem 0.8rem;
+  color: ${props => props.theme.colors.primary};
+
+  :-webkit-autofill {
+    box-shadow: 0 0 0 100rem ${props => props.theme.colors.background} inset;
+    color: ${props => props.theme.colors.primary};
+  }
 `;
 
 const Label = styled.label`

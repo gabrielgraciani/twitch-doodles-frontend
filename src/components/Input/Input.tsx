@@ -6,6 +6,8 @@ import React, {
   ChangeEvent,
 } from 'react';
 
+import KeyCodes from '../../interfaces/KeyCodes';
+
 import { Container, StyledInput, Label } from './Input.styles';
 import { InputProps } from './Input.types';
 
@@ -39,7 +41,7 @@ const Input = ({
 
   const handleTypeEsc = useCallback(
     (e: KeyboardEvent) => {
-      if (isMouseActive && e.keyCode === 27) {
+      if (isMouseActive && e.keyCode === KeyCodes.ESCAPE) {
         handleChangeMouseActive();
       }
     },
@@ -82,6 +84,7 @@ const Input = ({
         value={value}
         onChange={handleChange}
         name={name}
+        autoComplete="off"
       />
     </Container>
   );

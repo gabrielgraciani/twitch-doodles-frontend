@@ -6,6 +6,8 @@ import React, {
   ChangeEvent,
 } from 'react';
 
+import KeyCodes from '../../interfaces/KeyCodes';
+
 import { Container, StyledTextArea, Label } from './TextArea.styles';
 import { TextAreaProps } from './TextArea.types';
 
@@ -39,7 +41,7 @@ const TextArea = ({
 
   const handleTypeEsc = useCallback(
     (e: KeyboardEvent) => {
-      if (isMouseActive && e.keyCode === 27) {
+      if (isMouseActive && e.keyCode === KeyCodes.ESCAPE) {
         handleChangeMouseActive();
       }
     },
