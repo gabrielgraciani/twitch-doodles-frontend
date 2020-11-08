@@ -20,6 +20,10 @@
   "pages": {
     "home": {
       "title": "initial page"
+    },
+    "create": {
+      "title": "Create a new Doodle",
+      "simpleDoodle": "Simple doodle"
     }
   },
   "copyPasta": {

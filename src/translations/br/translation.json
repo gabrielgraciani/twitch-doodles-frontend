@@ -20,6 +20,10 @@
   "pages": {
     "home": {
       "title": "pagina inicial"
+    },
+    "create": {
+      "title": "Crie um novo desenho",
+      "simpleDoodle": "Desenho simples"
     }
   },
   "copyPasta": {

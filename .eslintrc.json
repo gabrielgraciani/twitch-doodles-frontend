@@ -43,7 +43,8 @@
      "prettier/prettier": "error",
      "no-console": "off",
      "import/no-duplicates": "off",
-     "no-shadow": "off"
+     "no-shadow": "off",
+     "@typescript-eslint/no-empty-function": "off"
     },
     "settings": {
       "import/resolver": {

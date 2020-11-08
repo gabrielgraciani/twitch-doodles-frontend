@@ -6,9 +6,26 @@ const Container = styled.div`
   max-width: 110rem;
 `;
 
+const CreateHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Title = styled.h1`
   font-size: 2rem;
   color: ${props => props.theme.colors.primary};
+`;
+
+const SimpleDoodle = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: ${props => props.theme.colors.primary};
+
+  button {
+    margin-left: 2rem;
+  }
 `;
 
 const Form = styled.form`
@@ -29,4 +46,4 @@ const FormItem = styled.div`
   margin: 1rem 0;
 `;
 
-export { Container, Title, Form, FormItem };
+export { Container, CreateHeader, Title, SimpleDoodle, Form, FormItem };
