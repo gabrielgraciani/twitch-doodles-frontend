@@ -52,7 +52,9 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       onMouseLeave={handleChangeActiveCopyToClipboard}
       onClick={() => handleCopyToClipboard(copyPasta.content)}
     >
-      <CopyPastaHeader>{copyPasta.name}</CopyPastaHeader>
+      <CopyPastaHeader>
+        {copyPasta.name ? copyPasta.name : t('copyPasta.name')}
+      </CopyPastaHeader>
       <CopyPastaContent>
         <UserName>{`${t('copyPasta.user')}: `}</UserName>
         {copyPasta.content}

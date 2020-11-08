@@ -24,6 +24,7 @@
   },
   "copyPasta": {
     "user": "twitchUser",
+    "name": "I don't have a name, BibleThump",
     "share": "Share",
     "copyToClipboard": "Copy to clipboard",
     "copiedToClipboard": "Copied!"
