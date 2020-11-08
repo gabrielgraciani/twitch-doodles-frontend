@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Input } from '../../components/Input';
+import { TextArea } from '../../components/TextArea';
 
 import { Container, Title, Form } from './Create.styles';
 
@@ -13,6 +14,12 @@ const Create = (): React.ReactElement => {
 
       <Form>
         <Input
+          name="name"
+          placeholder="Doodle's name"
+          value={value}
+          onChange={val => setValue(val)}
+        />
+        <TextArea
           name="name"
           placeholder="Doodle's name"
           value={value}

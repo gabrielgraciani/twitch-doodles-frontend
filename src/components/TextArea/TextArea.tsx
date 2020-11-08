@@ -6,15 +6,15 @@ import React, {
   ChangeEvent,
 } from 'react';
 
-import { Container, StyledInput, Label } from './Input.styles';
-import { InputProps } from './Input.types';
+import { Container, StyledTextArea, Label } from './TextArea.styles';
+import { TextAreaProps } from './TextArea.types';
 
-const Input = ({
+const TextArea = ({
   name,
   value,
   placeholder,
   onChange,
-}: InputProps): React.ReactElement => {
+}: TextAreaProps): React.ReactElement => {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isMouseActive, setIsMouseActive] = useState(false);
 
@@ -64,7 +64,7 @@ const Input = ({
     value ? 'hasValue' : ''
   }`;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value);
   };
 
@@ -77,14 +77,9 @@ const Input = ({
       ref={wrapperRef}
     >
       {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
-      <StyledInput
-        type="text"
-        value={value}
-        onChange={handleChange}
-        name={name}
-      />
+      <StyledTextArea value={value} onChange={handleChange} name={name} />
     </Container>
   );
 };
 
-export default Input;
+export default TextArea;

@@ -15,16 +15,19 @@ const Container = styled.div`
   }
 `;
 
-const StyledInput = styled.input`
+const StyledTextArea = styled.textarea`
   width: 100%;
   background: transparent;
   font-size: 1.4rem;
   padding: 1rem 0.8rem;
+  resize: none;
+  height: auto;
+  min-height: 15rem;
 `;
 
 const Label = styled.label`
   position: absolute;
-  top: 50%;
+  top: 2rem;
   left: 0.8rem;
   transform: translate(0%, -50%);
   pointer-events: none;
@@ -45,4 +48,4 @@ const Label = styled.label`
   }
 `;
 
-export { Container, StyledInput, Label };
+export { Container, StyledTextArea, Label };
