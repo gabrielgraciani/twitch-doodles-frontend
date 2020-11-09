@@ -10,12 +10,12 @@ const StyledButton = styled.button`
   justify-content: center;
   color: ${props => props.theme.colors.primary};
   border: 1px solid ${props => props.theme.colors.purpleLight};
-  border-radius: 3rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
 
   &:hover {
-    background-color: ${props => props.theme.colors.purpleLight};
-    border-color: ${props => props.theme.colors.purple};
+    color: ${props => props.theme.colors.background};
+    background: ${props => props.theme.colors.purpleLight};
   }
 
   &:active {

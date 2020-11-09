@@ -16,6 +16,11 @@ import {
   SimpleDoodle,
   Form,
   FormItem,
+  ChooseImageContainer,
+  ChooseImageText,
+  ChooseImageInput,
+  InputTreshold,
+  ContentDoodle,
 } from './Create.styles';
 
 const Create = (): React.ReactElement => {
@@ -24,11 +29,35 @@ const Create = (): React.ReactElement => {
   const [isSimpleDoodle, setIsSimpleDoodle] = useState(false);
   const [asciiArt, setAsciiArt] = useState('');
   const [rangeValue, setRangeValue] = useState(127);
+  const [hasImage, setHasImage] = useState<HTMLImageElement>();
 
   const { t } = useTranslation();
 
   const handleChangeSimpleDoodle = () => {
     setIsSimpleDoodle(!isSimpleDoodle);
+  };
+
+  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const image = new Image();
+    if (e.target.files && e.target.files[0]) {
+      image.src = URL.createObjectURL(e.target.files[0]);
+      image.onload = async () => {
+        setImage(image);
+        setHasImage(image);
+        const ascii = CreateAscii();
+        setAsciiArt(ascii);
+      };
+    }
+  };
+
+  const handleChangeThreshHold = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (hasImage) {
+      setRangeValue(parseInt(e.target.value, 10));
+      setThreshHold(parseInt(e.target.value, 10));
+
+      const ascii = CreateAscii();
+      setAsciiArt(ascii);
+    }
   };
 
   const handleSubmitForm = async () => {
@@ -38,26 +67,6 @@ const Create = (): React.ReactElement => {
       date: new Date(),
     });
     console.log('teste api', teste);
-  };
-
-  const handleChangeImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const image = new Image();
-    if (e.target.files) {
-      image.src = URL.createObjectURL(e.target.files[0]);
-      image.onload = async () => {
-        setImage(image);
-        const ascii = CreateAscii();
-        setAsciiArt(ascii);
-      };
-    }
-  };
-
-  const handleChangeThreshHold = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRangeValue(parseInt(e.target.value, 10));
-    setThreshHold(parseInt(e.target.value, 10));
-
-    const ascii = CreateAscii();
-    setAsciiArt(ascii);
   };
 
   return (
@@ -95,27 +104,39 @@ const Create = (): React.ReactElement => {
             />
           </FormItem>
         ) : (
-          <FormItem>
-            <input
-              type="file"
-              id="upload-button"
-              onChange={handleChangeImage}
-            />
-            <input
-              type="range"
-              id="threshold"
-              min="0"
-              max="255"
-              value={rangeValue}
-              onChange={handleChangeThreshHold}
-            />
+          <>
+            <FormItem>
+              <ChooseImageContainer>
+                <ChooseImageText htmlFor="upload">
+                  Choose an Image
+                </ChooseImageText>
+                <ChooseImageInput
+                  type="file"
+                  id="upload"
+                  onChange={handleChangeImage}
+                />
+              </ChooseImageContainer>
+            </FormItem>
 
-            <div
-              id="output"
-              contentEditable="true"
-              dangerouslySetInnerHTML={{ __html: asciiArt }}
-            />
-          </FormItem>
+            <FormItem>
+              <InputTreshold
+                type="range"
+                id="threshold"
+                min="0"
+                max="255"
+                value={rangeValue}
+                onChange={handleChangeThreshHold}
+              />
+            </FormItem>
+
+            <FormItem>
+              <ContentDoodle
+                id="output"
+                contentEditable="true"
+                dangerouslySetInnerHTML={{ __html: asciiArt }}
+              />
+            </FormItem>
+          </>
         )}
 
         <Button onClick={handleSubmitForm}>Create</Button>

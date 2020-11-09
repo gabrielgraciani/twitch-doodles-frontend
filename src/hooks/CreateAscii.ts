@@ -12,15 +12,16 @@ interface ImageBraileProps {
   data: Uint8ClampedArray;
 }
 
-let imageTeste: HTMLImageElement;
+let image: HTMLImageElement;
 
-export function setImage(image: HTMLImageElement): void {
-  imageTeste = image;
+export function setImage(newImage: HTMLImageElement): void {
+  image = newImage;
 
   CreateAscii();
 }
 
 export function setThreshHold(val: number): void {
+  if (!image) return;
   threshold = val;
   CreateAscii();
 }
@@ -29,8 +30,7 @@ export function CreateAscii(): string {
   const ascii: string[] = [];
 
   asciiHeight = Math.ceil(
-    (asciiWidth * asciiXDots * (imageTeste.height / imageTeste.width)) /
-      asciiYDots,
+    (asciiWidth * asciiXDots * (image.height / image.width)) / asciiYDots,
   );
 
   const canvas = document.createElement('canvas');
@@ -40,7 +40,7 @@ export function CreateAscii(): string {
   canvas.width = asciiWidth * asciiXDots;
   canvas.height = asciiHeight * asciiYDots;
 
-  context.drawImage(imageTeste, 0, 0, canvas.width, canvas.height);
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
 
   for (let y = 0; y < canvas.height; y += asciiYDots) {
     let line = '';
