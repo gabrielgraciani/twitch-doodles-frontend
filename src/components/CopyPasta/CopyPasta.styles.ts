@@ -89,7 +89,7 @@ const CopyPastaShareButton = styled.button<ShareButtonProps>`
   }
 `;
 
-const CopyToClipboard = styled.div`
+const StyledCopyToClipboard = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -125,6 +125,6 @@ export {
   UserName,
   CopyPastaFooter,
   CopyPastaShareButton,
-  CopyToClipboard,
+  StyledCopyToClipboard,
   CopyPastaDate,
 };

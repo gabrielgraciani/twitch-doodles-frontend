@@ -4,6 +4,8 @@ import { format } from 'date-fns';
 import { ptBR, enUS } from 'date-fns/locale';
 import { FiFacebook, FiTwitter } from 'react-icons/fi';
 
+import CopyToClipboard from '../../utils/CopyToClipboard';
+
 import { CopyPastaProps } from './CopyPasta.types';
 
 import {
@@ -13,7 +15,7 @@ import {
   CopyPastaFooter,
   UserName,
   CopyPastaShareButton,
-  CopyToClipboard,
+  StyledCopyToClipboard,
   CopyPastaDate,
 } from './CopyPasta.styles';
 
@@ -29,14 +31,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   };
 
   const handleCopyToClipboard = (content: string) => {
-    if (!isCopyingToClipboard) {
-      navigator.clipboard.writeText(content);
-
-      setIsCopyingToClipboard(true);
-      setTimeout(() => {
-        setIsCopyingToClipboard(false);
-      }, [2000]);
-    }
+    CopyToClipboard({ content, isCopyingToClipboard, setIsCopyingToClipboard });
   };
 
   const formatDateText =
@@ -74,11 +69,13 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
         </CopyPastaShareButton>
       </CopyPastaFooter>
 
-      <CopyToClipboard className={isActiveCopyToClipboard ? 'active' : ''}>
+      <StyledCopyToClipboard
+        className={isActiveCopyToClipboard ? 'active' : ''}
+      >
         {isCopyingToClipboard
           ? t('copyPasta.copiedToClipboard')
           : t('copyPasta.copyToClipboard')}
-      </CopyToClipboard>
+      </StyledCopyToClipboard>
     </StyledCopyPasta>
   );
 };

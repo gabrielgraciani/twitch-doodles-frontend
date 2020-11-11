@@ -44,6 +44,7 @@ const FormItem = styled.div`
   display: flex;
   justify-content: center;
   margin: 1rem 0;
+  position: relative;
 `;
 
 const ChooseImageContainer = styled.div`
@@ -54,7 +55,7 @@ const ChooseImageContainer = styled.div`
 `;
 const ChooseImageText = styled.label`
   width: 100%;
-  border: 1px solid ${props => props.theme.colors.purpleLight};
+  border: 0.1rem solid ${props => props.theme.colors.purpleLight};
   padding: 1rem;
   border-radius: 0.4rem;
   cursor: pointer;
@@ -73,27 +74,52 @@ const ChooseImageText = styled.label`
 const ChooseImageInput = styled.input`
   position: absolute;
   z-index: -1;
-  top: 15px;
-  left: 20px;
-  font-size: 17px;
-  color: #b8b8b8;
+  top: 1.5rem;
+  left: 2rem;
+  font-size: 1.7rem;
+  color: ${props => props.theme.colors.secundary};
 `;
 
 const InputTreshold = styled.input`
   -webkit-appearance: none;
   width: 100%;
-  height: 15px;
+  height: 1.5rem;
   background: ${props => props.theme.colors.purpleLight};
   outline: none;
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
     background: ${props => props.theme.colors.purple};
     border-radius: 50%;
     cursor: pointer;
+  }
+`;
+
+const ContainerDoodle = styled.div`
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+`;
+
+const StyledCopyToClipboard = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: ${props => props.theme.colors.purpleLight};
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-size: 1.6rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transform: translateY(100%);
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0%);
   }
 `;
 
@@ -111,4 +137,6 @@ export {
   ChooseImageInput,
   InputTreshold,
   ContentDoodle,
+  ContainerDoodle,
+  StyledCopyToClipboard,
 };

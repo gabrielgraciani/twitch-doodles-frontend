@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Switch } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
@@ -8,6 +8,7 @@ import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 import api from '../../services/api';
 import { setImage, setThreshHold, CreateAscii } from '../../utils/CreateAscii';
+import CopyToClipboard from '../../utils/CopyToClipboard';
 
 import {
   Container,
@@ -21,6 +22,8 @@ import {
   ChooseImageInput,
   InputTreshold,
   ContentDoodle,
+  ContainerDoodle,
+  StyledCopyToClipboard,
 } from './Create.styles';
 
 const Create = (): React.ReactElement => {
@@ -30,9 +33,10 @@ const Create = (): React.ReactElement => {
   const [asciiArt, setAsciiArt] = useState('');
   const [rangeValue, setRangeValue] = useState(127);
   const [hasImage, setHasImage] = useState<HTMLImageElement>();
+  const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
+  const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
 
   const { t } = useTranslation();
-  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleChangeSimpleDoodle = () => {
     setIsSimpleDoodle(!isSimpleDoodle);
@@ -61,19 +65,31 @@ const Create = (): React.ReactElement => {
     }
   };
 
-  const handleSubmitForm = async () => {
-    const asciiConverted = asciiArt
-      .replaceAll(/\n|\r/g, '')
-      .replaceAll('<br />', '\n')
-      .replaceAll('<span>', '')
-      .replaceAll('</span>', '');
+  const handleChangeActiveCopyToClipboard = () => {
+    setIsActiveCopyToClipboard(!isActiveCopyToClipboard);
+  };
 
-    const teste = await api.post('/copypastas', {
-      name: nameValue,
-      content: isSimpleDoodle ? contentValue : asciiConverted,
-      date: new Date(),
-    });
-    console.log('teste api', teste);
+  const handleCopyToClipboard = (content: string) => {
+    CopyToClipboard({ content, isCopyingToClipboard, setIsCopyingToClipboard });
+  };
+
+  const asciiConverted = asciiArt
+    .replaceAll(/\n|\r/g, '')
+    .replaceAll('<br />', '\n')
+    .replaceAll('<span>', '')
+    .replaceAll('</span>', '');
+
+  const handleSubmitForm = async () => {
+    // TODO make the validation if the content is null
+    if (!contentValue && !asciiConverted) {
+      console.log('preencha');
+    } else {
+      await api.post('/copypastas', {
+        name: nameValue,
+        content: isSimpleDoodle ? contentValue : asciiConverted,
+        date: new Date(),
+      });
+    }
   };
 
   return (
@@ -137,12 +153,24 @@ const Create = (): React.ReactElement => {
             </FormItem>
 
             <FormItem>
-              <ContentDoodle
-                id="output"
-                contentEditable="true"
-                dangerouslySetInnerHTML={{ __html: asciiArt }}
-                ref={contentRef}
-              />
+              <ContainerDoodle
+                onMouseEnter={handleChangeActiveCopyToClipboard}
+                onMouseLeave={handleChangeActiveCopyToClipboard}
+                onClick={() => handleCopyToClipboard(asciiConverted)}
+              >
+                <ContentDoodle
+                  id="output"
+                  dangerouslySetInnerHTML={{ __html: asciiArt }}
+                />
+
+                <StyledCopyToClipboard
+                  className={isActiveCopyToClipboard ? 'active' : ''}
+                >
+                  {isCopyingToClipboard
+                    ? t('copyPasta.copiedToClipboard')
+                    : t('copyPasta.copyToClipboard')}
+                </StyledCopyToClipboard>
+              </ContainerDoodle>
             </FormItem>
           </>
         )}
