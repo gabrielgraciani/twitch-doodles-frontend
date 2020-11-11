@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Switch } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
@@ -7,7 +7,7 @@ import { Input } from '../../components/Input';
 import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 import api from '../../services/api';
-import { setImage, setThreshHold, CreateAscii } from '../../hooks/CreateAscii';
+import { setImage, setThreshHold, CreateAscii } from '../../utils/CreateAscii';
 
 import {
   Container,
@@ -32,6 +32,7 @@ const Create = (): React.ReactElement => {
   const [hasImage, setHasImage] = useState<HTMLImageElement>();
 
   const { t } = useTranslation();
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleChangeSimpleDoodle = () => {
     setIsSimpleDoodle(!isSimpleDoodle);
@@ -61,9 +62,15 @@ const Create = (): React.ReactElement => {
   };
 
   const handleSubmitForm = async () => {
+    const asciiConverted = asciiArt
+      .replaceAll(/\n|\r/g, '')
+      .replaceAll('<br />', '\n')
+      .replaceAll('<span>', '')
+      .replaceAll('</span>', '');
+
     const teste = await api.post('/copypastas', {
       name: nameValue,
-      content: contentValue,
+      content: isSimpleDoodle ? contentValue : asciiConverted,
       date: new Date(),
     });
     console.log('teste api', teste);
@@ -134,6 +141,7 @@ const Create = (): React.ReactElement => {
                 id="output"
                 contentEditable="true"
                 dangerouslySetInnerHTML={{ __html: asciiArt }}
+                ref={contentRef}
               />
             </FormItem>
           </>
