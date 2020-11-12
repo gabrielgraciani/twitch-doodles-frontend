@@ -9,6 +9,7 @@ import { Button } from '../../components/Button';
 import api from '../../services/api';
 import { setImage, setThreshHold, CreateAscii } from '../../utils/CreateAscii';
 import CopyToClipboard from '../../utils/CopyToClipboard';
+import { useToast } from '../../hooks/useToast';
 
 import {
   Container,
@@ -41,6 +42,8 @@ const Create = (): React.ReactElement => {
   const [hasAsciiContentError, setHasAsciiContentError] = useState(false);
 
   const { t } = useTranslation();
+
+  const { addToast } = useToast();
 
   const handleChangeSimpleDoodle = () => {
     setIsSimpleDoodle(!isSimpleDoodle);
@@ -91,14 +94,31 @@ const Create = (): React.ReactElement => {
         setHasAsciiContentError(true);
       }
     } else {
-      setHasContentError(false);
-      setHasAsciiContentError(false);
-
-      await api.post('/copypastas', {
+      const response = await api.post('/copypastas', {
         name: nameValue,
         content: isSimpleDoodle ? contentValue : asciiConverted,
         date: new Date(),
       });
+
+      if (response.status === 200) {
+        setHasContentError(false);
+        setHasAsciiContentError(false);
+        setAsciiArt('');
+        setRangeValue(127);
+        setHasImage(undefined);
+
+        addToast({
+          type: 'success',
+          title: 'Criado com sucesso',
+          description: 'Você já pode vê-lo na lista de desenhos',
+        });
+      } else {
+        addToast({
+          type: 'error',
+          title: 'Erro ao criar',
+          description: 'Tente novamente mais tarde',
+        });
+      }
     }
   };
 

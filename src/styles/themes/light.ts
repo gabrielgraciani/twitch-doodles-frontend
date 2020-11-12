@@ -19,5 +19,12 @@ export default {
     inputBorderColor: 'rgba(0, 0, 0, 0.23)',
     inputBorderColorActive: '#1976d2',
     inputError: '#f44336',
+
+    toastInfoBackground: '#ebf8ff',
+    toastInfoColor: '#3172b7',
+    toastSuccessBackground: '#e6fffa',
+    toastSuccessColor: '#2e656a',
+    toastErrorBackground: '#fddede',
+    toastErrorColor: '#c53030',
   },
 };

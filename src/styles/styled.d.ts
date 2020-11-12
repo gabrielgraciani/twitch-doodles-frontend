@@ -22,6 +22,13 @@ declare module 'styled-components' {
       inputBorderColor: string;
       inputBorderColorActive: string;
       inputError: string;
+
+      toastInfoBackground: string;
+      toastInfoColor: string;
+      toastSuccessBackground: string;
+      toastSuccessColor: string;
+      toastErrorBackground: string;
+      toastErrorColor: string;
     };
   }
 }
