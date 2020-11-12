@@ -23,7 +23,11 @@
     },
     "create": {
       "title": "Crie um novo desenho",
-      "simpleDoodle": "Desenho simples"
+      "simpleDoodle": "Desenho simples",
+      "field_required": "O campo {{field}} é obrigatório",
+      "content": "Conteúdo",
+      "image": "Imagem",
+      "create": "Criar"
     }
   },
   "copyPasta": {

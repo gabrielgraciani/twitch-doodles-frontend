@@ -23,7 +23,11 @@
     },
     "create": {
       "title": "Create a new Doodle",
-      "simpleDoodle": "Simple doodle"
+      "simpleDoodle": "Simple doodle",
+      "field_required": "The field {{field}} is required",
+      "content": "Content",
+      "image": "Image",
+      "create": "Create"
     }
   },
   "copyPasta": {

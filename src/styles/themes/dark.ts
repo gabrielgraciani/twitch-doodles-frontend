@@ -18,5 +18,6 @@ export default {
 
     inputBorderColor: 'rgba(255, 255, 255, 0.23)',
     inputBorderColorActive: '#90cac9',
+    inputError: '#f44336',
   },
 };

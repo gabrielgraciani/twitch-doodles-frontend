@@ -17,6 +17,8 @@ import {
   SimpleDoodle,
   Form,
   FormItem,
+  ContainerError,
+  ErrorMessage,
   ChooseImageContainer,
   ChooseImageText,
   ChooseImageInput,
@@ -35,6 +37,8 @@ const Create = (): React.ReactElement => {
   const [hasImage, setHasImage] = useState<HTMLImageElement>();
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
+  const [hasContentError, setHasContentError] = useState(false);
+  const [hasAsciiContentError, setHasAsciiContentError] = useState(false);
 
   const { t } = useTranslation();
 
@@ -80,10 +84,16 @@ const Create = (): React.ReactElement => {
     .replaceAll('</span>', '');
 
   const handleSubmitForm = async () => {
-    // TODO make the validation if the content is null
     if (!contentValue && !asciiConverted) {
-      console.log('preencha');
+      if (isSimpleDoodle) {
+        setHasContentError(true);
+      } else {
+        setHasAsciiContentError(true);
+      }
     } else {
+      setHasContentError(false);
+      setHasAsciiContentError(false);
+
       await api.post('/copypastas', {
         name: nameValue,
         content: isSimpleDoodle ? contentValue : asciiConverted,
@@ -124,21 +134,34 @@ const Create = (): React.ReactElement => {
               placeholder="Doodle's content"
               value={contentValue}
               onChange={val => setContentValue(val)}
+              error={hasContentError}
+              errorMessage={t('pages.create.field_required', {
+                field: t('pages.create.content'),
+              })}
             />
           </FormItem>
         ) : (
           <>
             <FormItem>
-              <ChooseImageContainer>
-                <ChooseImageText htmlFor="upload">
-                  Choose an Image
-                </ChooseImageText>
-                <ChooseImageInput
-                  type="file"
-                  id="upload"
-                  onChange={handleChangeImage}
-                />
-              </ChooseImageContainer>
+              <ContainerError>
+                <ChooseImageContainer>
+                  <ChooseImageText htmlFor="upload">
+                    Choose an Image
+                  </ChooseImageText>
+                  <ChooseImageInput
+                    type="file"
+                    id="upload"
+                    onChange={handleChangeImage}
+                  />
+                </ChooseImageContainer>
+                {hasAsciiContentError && (
+                  <ErrorMessage>
+                    {t('pages.create.field_required', {
+                      field: t('pages.create.image'),
+                    })}
+                  </ErrorMessage>
+                )}
+              </ContainerError>
             </FormItem>
 
             <FormItem>
@@ -175,7 +198,7 @@ const Create = (): React.ReactElement => {
           </>
         )}
 
-        <Button onClick={handleSubmitForm}>Create</Button>
+        <Button onClick={handleSubmitForm}>{t('pages.create.create')}</Button>
       </Form>
     </Container>
   );

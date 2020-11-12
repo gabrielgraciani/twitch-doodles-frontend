@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
+`;
+
+const TextAreaContainer = styled.div`
+  width: 100%;
   border: 0.1rem solid ${props => props.theme.colors.inputBorderColor};
   border-radius: 0.4rem;
   position: relative;
@@ -12,6 +16,9 @@ const Container = styled.div`
   }
   &.mouseActive {
     border-color: ${props => props.theme.colors.inputBorderColorActive};
+  }
+  &.hasError {
+    border-color: ${props => props.theme.colors.inputError};
   }
 `;
 
@@ -41,11 +48,19 @@ const Label = styled.label`
     color: ${props => props.theme.colors.inputBorderColorActive};
     font-size: 1.1rem;
   }
-
   &.hasValue {
     top: 0%;
     font-size: 1.1rem;
   }
+  &.hasError {
+    color: ${props => props.theme.colors.inputError};
+  }
 `;
 
-export { Container, StyledTextArea, Label };
+const ErrorMessage = styled.div`
+  color: ${props => props.theme.colors.inputError};
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
+`;
+
+export { Container, TextAreaContainer, StyledTextArea, Label, ErrorMessage };

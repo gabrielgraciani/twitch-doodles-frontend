@@ -47,12 +47,22 @@ const FormItem = styled.div`
   position: relative;
 `;
 
+const ContainerError = styled.div`
+  width: 100%;
+`;
+
+const ErrorMessage = styled.div`
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.inputError};
+`;
+
 const ChooseImageContainer = styled.div`
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
 `;
+
 const ChooseImageText = styled.label`
   width: 100%;
   border: 0.1rem solid ${props => props.theme.colors.purpleLight};
@@ -132,6 +142,8 @@ export {
   SimpleDoodle,
   Form,
   FormItem,
+  ContainerError,
+  ErrorMessage,
   ChooseImageContainer,
   ChooseImageText,
   ChooseImageInput,

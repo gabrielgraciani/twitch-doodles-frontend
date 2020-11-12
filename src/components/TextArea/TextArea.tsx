@@ -8,7 +8,13 @@ import React, {
 
 import KeyCodes from '../../interfaces/KeyCodes';
 
-import { Container, StyledTextArea, Label } from './TextArea.styles';
+import {
+  Container,
+  TextAreaContainer,
+  StyledTextArea,
+  Label,
+  ErrorMessage,
+} from './TextArea.styles';
 import { TextAreaProps } from './TextArea.types';
 
 const TextArea = ({
@@ -16,6 +22,8 @@ const TextArea = ({
   value,
   placeholder,
   onChange,
+  error,
+  errorMessage,
 }: TextAreaProps): React.ReactElement => {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isMouseActive, setIsMouseActive] = useState(false);
@@ -48,6 +56,18 @@ const TextArea = ({
     [handleChangeMouseActive, isMouseActive],
   );
 
+  const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
+    isMouseActive ? 'mouseActive' : ''
+  } ${error ? 'hasError' : ''}`;
+
+  const labelClasses = `${isMouseActive ? 'mouseActive' : ''} ${
+    value ? 'hasValue' : ''
+  } ${error ? 'hasError' : ''}`;
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(e.target.value);
+  };
+
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
     window.addEventListener('keydown', handleTypeEsc);
@@ -58,28 +78,19 @@ const TextArea = ({
     };
   }, [handleClickOutside, handleChangeMouseActive, handleTypeEsc]);
 
-  const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
-    isMouseActive ? 'mouseActive' : ''
-  }`;
-
-  const labelClasses = `${isMouseActive ? 'mouseActive' : ''} ${
-    value ? 'hasValue' : ''
-  }`;
-
-  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    onChange(e.target.value);
-  };
-
   return (
-    <Container
-      onMouseEnter={() => setIsMouseEnter(true)}
-      onMouseLeave={() => setIsMouseEnter(false)}
-      onClick={() => setIsMouseActive(true)}
-      className={containerClasses}
-      ref={wrapperRef}
-    >
-      {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
-      <StyledTextArea value={value} onChange={handleChange} name={name} />
+    <Container>
+      <TextAreaContainer
+        onMouseEnter={() => setIsMouseEnter(true)}
+        onMouseLeave={() => setIsMouseEnter(false)}
+        onClick={() => setIsMouseActive(true)}
+        className={containerClasses}
+        ref={wrapperRef}
+      >
+        {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
+        <StyledTextArea value={value} onChange={handleChange} name={name} />
+      </TextAreaContainer>
+      {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Container>
   );
 };

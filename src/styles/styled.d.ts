@@ -21,6 +21,7 @@ declare module 'styled-components' {
 
       inputBorderColor: string;
       inputBorderColorActive: string;
+      inputError: string;
     };
   }
 }

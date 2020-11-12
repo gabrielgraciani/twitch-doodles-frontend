@@ -8,7 +8,13 @@ import React, {
 
 import KeyCodes from '../../interfaces/KeyCodes';
 
-import { Container, StyledInput, Label } from './Input.styles';
+import {
+  Container,
+  InputContainer,
+  StyledInput,
+  Label,
+  ErrorMessage,
+} from './Input.styles';
 import { InputProps } from './Input.types';
 
 const Input = ({
@@ -16,6 +22,8 @@ const Input = ({
   value,
   placeholder,
   onChange,
+  error,
+  errorMessage,
 }: InputProps): React.ReactElement => {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isMouseActive, setIsMouseActive] = useState(false);
@@ -48,6 +56,18 @@ const Input = ({
     [handleChangeMouseActive, isMouseActive],
   );
 
+  const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
+    isMouseActive ? 'mouseActive' : ''
+  } ${error ? 'hasError' : ''}`;
+
+  const labelClasses = `${isMouseActive ? 'mouseActive' : ''} ${
+    value ? 'hasValue' : ''
+  } ${error ? 'hasError' : ''}`;
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  };
+
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
     window.addEventListener('keydown', handleTypeEsc);
@@ -58,34 +78,25 @@ const Input = ({
     };
   }, [handleClickOutside, handleChangeMouseActive, handleTypeEsc]);
 
-  const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
-    isMouseActive ? 'mouseActive' : ''
-  }`;
-
-  const labelClasses = `${isMouseActive ? 'mouseActive' : ''} ${
-    value ? 'hasValue' : ''
-  }`;
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value);
-  };
-
   return (
-    <Container
-      onMouseEnter={() => setIsMouseEnter(true)}
-      onMouseLeave={() => setIsMouseEnter(false)}
-      onClick={() => setIsMouseActive(true)}
-      className={containerClasses}
-      ref={wrapperRef}
-    >
-      {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
-      <StyledInput
-        type="text"
-        value={value}
-        onChange={handleChange}
-        name={name}
-        autoComplete="off"
-      />
+    <Container>
+      <InputContainer
+        onMouseEnter={() => setIsMouseEnter(true)}
+        onMouseLeave={() => setIsMouseEnter(false)}
+        onClick={() => setIsMouseActive(true)}
+        className={containerClasses}
+        ref={wrapperRef}
+      >
+        {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
+        <StyledInput
+          type="text"
+          value={value}
+          onChange={handleChange}
+          name={name}
+          autoComplete="off"
+        />
+      </InputContainer>
+      {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Container>
   );
 };
