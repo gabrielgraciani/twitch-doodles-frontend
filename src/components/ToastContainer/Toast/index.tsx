@@ -6,7 +6,7 @@ import {
   FiXCircle,
 } from 'react-icons/fi';
 
-import { Container } from './styles';
+import { Container, TextContainer, Text, Button } from './styles';
 import { ToastMessageProps } from '../../../interfaces/Toast';
 import { useToast } from '../../../hooks/useToast';
 
@@ -43,15 +43,15 @@ const Toast = ({ message, style }: ToastProps): React.ReactElement => {
     >
       {icons[message.type || 'info']}
 
-      <div>
+      <TextContainer>
         <strong>{message.title}</strong>
 
-        {message.description && <p>{message.description}</p>}
-      </div>
+        {message.description && <Text>{message.description}</Text>}
+      </TextContainer>
 
-      <button type="button" onClick={() => removeToast(message.id)}>
+      <Button type="button" onClick={() => removeToast(message.id)}>
         <FiXCircle size={18} />
-      </button>
+      </Button>
     </Container>
   );
 };
