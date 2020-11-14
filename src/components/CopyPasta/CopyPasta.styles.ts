@@ -10,6 +10,7 @@ const StyledCopyPasta = styled.div`
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
+  height: fit-content;
 
   &:hover {
     transform: translateY(-0.7rem);

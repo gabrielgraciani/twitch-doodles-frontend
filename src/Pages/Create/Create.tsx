@@ -87,12 +87,15 @@ const Create = (): React.ReactElement => {
 
   const handleAddCategory = (val: string) => {
     console.log('aqui');
-    const allCategories =
-      categories !== ''
-        ? categories.split(',').concat(val).join(',')
-        : categories.concat(val);
+    if (val !== '') {
+      const allCategories =
+        categories !== ''
+          ? categories.split(',').concat(val).join(',')
+          : categories.concat(val);
 
-    setCategories(allCategories);
+      setCategoryValue('');
+      setCategories(allCategories);
+    }
   };
 
   const handleRemoveCategory = (val: string) => {
@@ -124,6 +127,7 @@ const Create = (): React.ReactElement => {
         name: nameValue,
         content: isSimpleDoodle ? contentValue : asciiConverted,
         date: new Date(),
+        categories,
       });
 
       if (response.status === 200) {
@@ -132,6 +136,10 @@ const Create = (): React.ReactElement => {
         setAsciiArt('');
         setRangeValue(127);
         setHasImage(undefined);
+        setNameValue('');
+        setContentValue('');
+        setCategories('');
+        setCategoryValue('');
 
         addToast({
           type: 'success',

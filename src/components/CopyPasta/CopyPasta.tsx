@@ -33,6 +33,8 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     CopyToClipboard({ content, isCopyingToClipboard, setIsCopyingToClipboard });
   };
 
+  const categoriesSplitted = copyPasta.categories.split(',');
+
   const formatDateText =
     language === 'br' ? "iiii',' dd 'de' MMMM 'de' y" : "iiii',' MMMM dd',' y";
 
@@ -54,12 +56,13 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
         {copyPasta.content}
       </CopyPastaContent>
 
-      <Tag.Tags margin="1rem 0">
-        <Tag text="teste wqewqe wqewq eqwew" />
-        <Tag text="teste" />
-        <Tag text="teste" />
-        <Tag text="teste wqewqe wqewq eqwew" />
-      </Tag.Tags>
+      {categoriesSplitted.length > 0 && categoriesSplitted[0] !== '' && (
+        <Tag.Tags margin="1rem 0">
+          {categoriesSplitted.map((category: string) => (
+            <Tag text={category} />
+          ))}
+        </Tag.Tags>
+      )}
 
       <CopyPastaFooter>
         {t('copyPasta.posted')}
