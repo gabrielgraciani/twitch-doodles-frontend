@@ -27,7 +27,11 @@
       "field_required": "O campo {{field}} é obrigatório",
       "content": "Conteúdo",
       "image": "Imagem",
-      "create": "Criar"
+      "create": "Criar",
+      "inputName": "Nome do desenho (opcional)",
+      "inputContent": "Conteúdo do desenho",
+      "inputCategories": "Categorias do desenho (opcional) (pressione ENTER para adicionar)",
+      "inputImage": "Escolha uma imagem"
     }
   },
   "copyPasta": {

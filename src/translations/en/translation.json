@@ -27,7 +27,11 @@
       "field_required": "The field {{field}} is required",
       "content": "Content",
       "image": "Image",
-      "create": "Create"
+      "create": "Create",
+      "inputName": "Doodle's name (optional)",
+      "inputContent": "Doodle's content (optional)",
+      "inputCategories": "Doodle's categories (optional) (press ENTER to add)",
+      "inputImage": "Choose an image"
     }
   },
   "copyPasta": {

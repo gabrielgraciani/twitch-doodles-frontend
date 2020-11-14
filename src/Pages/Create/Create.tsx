@@ -176,7 +176,7 @@ const Create = (): React.ReactElement => {
         <FormItem>
           <Input
             name="name"
-            placeholder="Doodle's name (optional)"
+            placeholder={t('pages.create.inputName')}
             value={nameValue}
             onChange={val => setNameValue(val)}
           />
@@ -185,7 +185,7 @@ const Create = (): React.ReactElement => {
           <FormItem>
             <TextArea
               name="name"
-              placeholder="Doodle's content"
+              placeholder={t('pages.create.inputContent')}
               value={contentValue}
               onChange={val => setContentValue(val)}
               error={hasContentError}
@@ -200,7 +200,7 @@ const Create = (): React.ReactElement => {
               <ContainerError>
                 <ChooseImageContainer>
                   <ChooseImageText htmlFor="upload">
-                    Choose an Image
+                    {t('pages.create.inputImage')}
                   </ChooseImageText>
                   <ChooseImageInput
                     type="file"
@@ -255,7 +255,7 @@ const Create = (): React.ReactElement => {
         <FormItem>
           <Input
             name="categories"
-            placeholder="Doodle's categories (optional) (press ENTER to add)"
+            placeholder={t('pages.create.inputCategories')}
             value={categoryValue}
             onChange={val => setCategoryValue(val)}
             onPressEnter={() => handleAddCategory(categoryValue)}
