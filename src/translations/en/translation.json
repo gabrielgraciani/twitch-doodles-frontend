@@ -33,7 +33,7 @@
   "copyPasta": {
     "user": "twitchUser",
     "name": "I don't have a name, BibleThump",
-    "share": "Share",
+    "posted": "Posted in:",
     "copyToClipboard": "Copy to clipboard",
     "copiedToClipboard": "Copied!"
   }

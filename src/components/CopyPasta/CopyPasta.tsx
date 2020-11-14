@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { ptBR, enUS } from 'date-fns/locale';
-import { FiFacebook, FiTwitter } from 'react-icons/fi';
 
 import CopyToClipboard from '../../utils/CopyToClipboard';
+import { Tag } from '../Tag';
 
 import { CopyPastaProps } from './CopyPasta.types';
 
@@ -14,7 +14,6 @@ import {
   CopyPastaContent,
   CopyPastaFooter,
   UserName,
-  CopyPastaShareButton,
   StyledCopyToClipboard,
   CopyPastaDate,
 } from './CopyPasta.styles';
@@ -55,18 +54,16 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
         {copyPasta.content}
       </CopyPastaContent>
 
-      <CopyPastaDate>{date}</CopyPastaDate>
+      <Tag.Tags margin="1rem 0">
+        <Tag text="teste wqewqe wqewq eqwew" />
+        <Tag text="teste" />
+        <Tag text="teste wqewqe eqwew" />
+        <Tag text="teste wqewqe wqewq eqwew" />
+      </Tag.Tags>
 
       <CopyPastaFooter>
-        <CopyPastaShareButton>
-          <FiFacebook />
-          {t('copyPasta.share')}
-        </CopyPastaShareButton>
-
-        <CopyPastaShareButton socialType="twitter">
-          <FiTwitter />
-          {t('copyPasta.share')}
-        </CopyPastaShareButton>
+        {t('copyPasta.posted')}
+        <CopyPastaDate>{date}</CopyPastaDate>
       </CopyPastaFooter>
 
       <StyledCopyToClipboard

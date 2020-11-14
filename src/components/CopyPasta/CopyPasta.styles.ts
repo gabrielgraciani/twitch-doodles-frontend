@@ -1,25 +1,4 @@
-import styled, { css } from 'styled-components';
-
-interface ShareButtonProps {
-  socialType?: 'facebook' | 'twitter';
-}
-
-const buttonTypeVariations = {
-  facebook: css`
-    background: #4267b2;
-
-    &:hover {
-      background: #365899;
-    }
-  `,
-  twitter: css`
-    background: #1b95e0;
-
-    &:hover {
-      background: #0c7abf;
-    }
-  `,
-};
+import styled from 'styled-components';
 
 const StyledCopyPasta = styled.div`
   display: flex;
@@ -29,7 +8,7 @@ const StyledCopyPasta = styled.div`
   padding: 1rem 1.5rem;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 
   &:hover {
@@ -62,31 +41,9 @@ const CopyPastaFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const CopyPastaShareButton = styled.button<ShareButtonProps>`
-  padding: 0.2rem 0.5rem;
-  display: flex;
-  align-items: center;
-  border-radius: 0.5rem;
-  margin-right: 0.8rem;
-  transition: all 0.2s ease;
-  color: #fff;
-
-  ${props => buttonTypeVariations[props.socialType || 'facebook']}
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  svg {
-    font-size: 1.7rem;
-    margin-right: 0.4rem;
-
-    path {
-      color: #fff;
-    }
-  }
+  flex-direction: column;
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.secundary};
 `;
 
 const StyledCopyToClipboard = styled.div`
@@ -124,7 +81,6 @@ export {
   CopyPastaContent,
   UserName,
   CopyPastaFooter,
-  CopyPastaShareButton,
   StyledCopyToClipboard,
   CopyPastaDate,
 };
