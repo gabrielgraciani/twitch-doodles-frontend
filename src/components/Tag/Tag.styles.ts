@@ -11,6 +11,7 @@ const Container = styled.div`
   background: ${props => props.theme.colors.purpleLight};
   border-radius: 0.4rem;
   justify-content: center;
+  margin: 0 1rem 1rem 0;
 `;
 
 const Text = styled.span`
@@ -25,15 +26,13 @@ const Remove = styled.span`
   font-size: 1.2rem;
   line-height: 1.2rem;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const Tags = styled.div<TagsProps>`
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(31%, 1fr));
-  justify-content: space-between;
-  grid-row-gap: 1rem;
-  grid-column-gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 
   margin: ${props => props.margin};
 `;

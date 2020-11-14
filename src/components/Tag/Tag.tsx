@@ -4,12 +4,18 @@ import { CloseOutlined } from '@ant-design/icons';
 import { TagProps } from './Tag.types';
 import { Container, Text, Remove, Tags } from './Tag.styles';
 
-const Tag = ({ isReadonly, text }: TagProps): React.ReactElement => {
+const Tag = ({ isReadonly, text, removeTag }: TagProps): React.ReactElement => {
+  const handleRemoveTag = () => {
+    if (removeTag) {
+      removeTag();
+    }
+  };
+
   return (
     <Container>
       <Text>{text}</Text>
       {!isReadonly && (
-        <Remove>
+        <Remove onClick={handleRemoveTag}>
           <CloseOutlined />
         </Remove>
       )}

@@ -24,11 +24,13 @@ const Input = ({
   onChange,
   error,
   errorMessage,
+  onPressEnter,
 }: InputProps): React.ReactElement => {
   const [isMouseEnter, setIsMouseEnter] = useState(false);
   const [isMouseActive, setIsMouseActive] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleChangeMouseActive = useCallback(() => {
     setIsMouseActive(false);
@@ -54,6 +56,17 @@ const Input = ({
       }
     },
     [handleChangeMouseActive, isMouseActive],
+  );
+
+  const handlePressEnter = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (onPressEnter) {
+        if (e.keyCode === KeyCodes.ENTER) {
+          onPressEnter();
+        }
+      }
+    },
+    [onPressEnter],
   );
 
   const containerClasses = `${isMouseEnter ? 'mouseEnter' : ''} ${
@@ -93,6 +106,8 @@ const Input = ({
           value={value}
           onChange={handleChange}
           name={name}
+          ref={inputRef}
+          onKeyUp={handlePressEnter}
           autoComplete="off"
         />
       </InputContainer>

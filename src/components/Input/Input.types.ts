@@ -5,4 +5,5 @@ export interface InputProps {
   placeholder?: string;
   error?: boolean;
   errorMessage?: string;
+  onPressEnter?: () => void;
 }

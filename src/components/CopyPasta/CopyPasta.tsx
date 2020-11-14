@@ -57,7 +57,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       <Tag.Tags margin="1rem 0">
         <Tag text="teste wqewqe wqewq eqwew" />
         <Tag text="teste" />
-        <Tag text="teste wqewqe eqwew" />
+        <Tag text="teste" />
         <Tag text="teste wqewqe wqewq eqwew" />
       </Tag.Tags>
 

@@ -6,7 +6,10 @@ import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { Input } from '../../components/Input';
 import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
+import { Tag } from '../../components/Tag';
+
 import api from '../../services/api';
+
 import { setImage, setThreshHold, CreateAscii } from '../../utils/CreateAscii';
 import CopyToClipboard from '../../utils/CopyToClipboard';
 import { useToast } from '../../hooks/useToast';
@@ -32,6 +35,8 @@ import {
 const Create = (): React.ReactElement => {
   const [nameValue, setNameValue] = useState('');
   const [contentValue, setContentValue] = useState('');
+  const [categoryValue, setCategoryValue] = useState('');
+  const [categories, setCategories] = useState('');
   const [isSimpleDoodle, setIsSimpleDoodle] = useState(false);
   const [asciiArt, setAsciiArt] = useState('');
   const [rangeValue, setRangeValue] = useState(127);
@@ -79,6 +84,27 @@ const Create = (): React.ReactElement => {
   const handleCopyToClipboard = (content: string) => {
     CopyToClipboard({ content, isCopyingToClipboard, setIsCopyingToClipboard });
   };
+
+  const handleAddCategory = (val: string) => {
+    console.log('aqui');
+    const allCategories =
+      categories !== ''
+        ? categories.split(',').concat(val).join(',')
+        : categories.concat(val);
+
+    setCategories(allCategories);
+  };
+
+  const handleRemoveCategory = (val: string) => {
+    const allCategories = categories.split(',');
+    const filteredCategories = allCategories
+      .filter((category: string) => category !== val)
+      .join(',');
+
+    setCategories(filteredCategories);
+  };
+
+  const categoriesSplitted = categories.split(',');
 
   const asciiConverted = asciiArt
     .replaceAll(/\n|\r/g, '')
@@ -216,6 +242,31 @@ const Create = (): React.ReactElement => {
               </ContainerDoodle>
             </FormItem>
           </>
+        )}
+
+        <FormItem>
+          <Input
+            name="categories"
+            placeholder="Doodle's categories (optional) (press ENTER to add)"
+            value={categoryValue}
+            onChange={val => setCategoryValue(val)}
+            onPressEnter={() => handleAddCategory(categoryValue)}
+          />
+        </FormItem>
+
+        {categoriesSplitted.length > 0 && categoriesSplitted[0] !== '' && (
+          <FormItem>
+            <Tag.Tags>
+              {categoriesSplitted.map((category: string, index: number) => (
+                <Tag
+                  key={index}
+                  text={category}
+                  isReadonly={false}
+                  removeTag={() => handleRemoveCategory(category)}
+                />
+              ))}
+            </Tag.Tags>
+          </FormItem>
         )}
 
         <Button onClick={handleSubmitForm}>{t('pages.create.create')}</Button>

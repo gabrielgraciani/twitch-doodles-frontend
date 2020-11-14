@@ -45,7 +45,8 @@
      "import/no-duplicates": "off",
      "no-shadow": "off",
      "@typescript-eslint/no-empty-function": "off",
-     "react/no-danger": "off"
+     "react/no-danger": "off",
+     "react/no-array-index-key": "off"
     },
     "settings": {
       "import/resolver": {
