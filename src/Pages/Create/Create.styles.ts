@@ -28,25 +28,6 @@ const SimpleDoodle = styled.div`
   }
 `;
 
-const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  > button {
-    margin-top: 1rem;
-  }
-`;
-
-const FormItem = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-  position: relative;
-`;
-
 const ContainerError = styled.div`
   width: 100%;
 `;
@@ -140,8 +121,6 @@ export {
   CreateHeader,
   Title,
   SimpleDoodle,
-  Form,
-  FormItem,
   ContainerError,
   ErrorMessage,
   ChooseImageContainer,

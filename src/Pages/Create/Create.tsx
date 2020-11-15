@@ -7,6 +7,7 @@ import { Input } from '../../components/Input';
 import { TextArea } from '../../components/TextArea';
 import { Button } from '../../components/Button';
 import { Tag } from '../../components/Tag';
+import { Form } from '../../components/Form';
 
 import api from '../../services/api';
 
@@ -19,8 +20,6 @@ import {
   CreateHeader,
   Title,
   SimpleDoodle,
-  Form,
-  FormItem,
   ContainerError,
   ErrorMessage,
   ChooseImageContainer,
@@ -172,17 +171,17 @@ const Create = (): React.ReactElement => {
         </SimpleDoodle>
       </CreateHeader>
 
-      <Form autoComplete="off">
-        <FormItem>
+      <Form>
+        <Form.FormItem>
           <Input
             name="name"
             placeholder={t('pages.create.inputName')}
             value={nameValue}
             onChange={val => setNameValue(val)}
           />
-        </FormItem>
+        </Form.FormItem>
         {isSimpleDoodle ? (
-          <FormItem>
+          <Form.FormItem>
             <TextArea
               name="name"
               placeholder={t('pages.create.inputContent')}
@@ -193,10 +192,10 @@ const Create = (): React.ReactElement => {
                 field: t('pages.create.content'),
               })}
             />
-          </FormItem>
+          </Form.FormItem>
         ) : (
           <>
-            <FormItem>
+            <Form.FormItem>
               <ContainerError>
                 <ChooseImageContainer>
                   <ChooseImageText htmlFor="upload">
@@ -216,9 +215,9 @@ const Create = (): React.ReactElement => {
                   </ErrorMessage>
                 )}
               </ContainerError>
-            </FormItem>
+            </Form.FormItem>
 
-            <FormItem>
+            <Form.FormItem>
               <InputTreshold
                 type="range"
                 id="threshold"
@@ -227,9 +226,9 @@ const Create = (): React.ReactElement => {
                 value={rangeValue}
                 onChange={handleChangeThreshHold}
               />
-            </FormItem>
+            </Form.FormItem>
 
-            <FormItem>
+            <Form.FormItem>
               <ContainerDoodle
                 onMouseEnter={handleChangeActiveCopyToClipboard}
                 onMouseLeave={handleChangeActiveCopyToClipboard}
@@ -248,11 +247,11 @@ const Create = (): React.ReactElement => {
                     : t('copyPasta.copyToClipboard')}
                 </StyledCopyToClipboard>
               </ContainerDoodle>
-            </FormItem>
+            </Form.FormItem>
           </>
         )}
 
-        <FormItem>
+        <Form.FormItem>
           <Input
             name="categories"
             placeholder={t('pages.create.inputCategories')}
@@ -260,10 +259,10 @@ const Create = (): React.ReactElement => {
             onChange={val => setCategoryValue(val)}
             onPressEnter={() => handleAddCategory(categoryValue)}
           />
-        </FormItem>
+        </Form.FormItem>
 
         {categoriesSplitted.length > 0 && categoriesSplitted[0] !== '' && (
-          <FormItem>
+          <Form.FormItem>
             <Tag.Tags>
               {categoriesSplitted.map((category: string, index: number) => (
                 <Tag
@@ -274,7 +273,7 @@ const Create = (): React.ReactElement => {
                 />
               ))}
             </Tag.Tags>
-          </FormItem>
+          </Form.FormItem>
         )}
 
         <Button onClick={handleSubmitForm}>{t('pages.create.create')}</Button>

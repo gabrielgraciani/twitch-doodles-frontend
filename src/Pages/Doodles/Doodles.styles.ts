@@ -14,4 +14,6 @@ const CardsContainer = styled.div`
   padding: 2rem 0;
 `;
 
-export { Container, CardsContainer };
+const SearchContainer = styled.div``;
+
+export { Container, CardsContainer, SearchContainer };
