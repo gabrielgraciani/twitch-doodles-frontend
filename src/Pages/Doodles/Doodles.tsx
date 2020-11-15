@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 // import { ReactQueryDevtools } from 'react-query-devtools';
 import { CopyPasta } from '../../components/CopyPasta';
-import { Form } from '../../components/Form';
 import { Input } from '../../components/Input';
+import { Select } from '../../components/Select';
 
 import useCopyPastas from '../../hooks/useCopyPastas';
 
-import { Container, CardsContainer } from './Doodles.styles';
+import {
+  Container,
+  CardsContainer,
+  FilterContainer,
+  FilterItem,
+} from './Doodles.styles';
 
 const Doodles = (): React.ReactElement => {
   const { data: copyPastas } = useCopyPastas();
@@ -19,9 +24,8 @@ const Doodles = (): React.ReactElement => {
     setNameDoodle(val);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleChangeCategory = (val: any) => {
-    setCategoryDoodle(val.target.value);
+  const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setCategoryDoodle(e.target.value);
   };
 
   useEffect(() => {
@@ -40,22 +44,29 @@ const Doodles = (): React.ReactElement => {
 
   return (
     <Container>
-      <Form>
-        <Form.FormItem>
-          <select onChange={e => handleChangeCategory(e)}>
-            <option value="">todas</option>
-            <option value="empresa">empresa</option>
-            <option value="teste">teste</option>
-            <option value="venturus">venturus</option>
-          </select>
+      <FilterContainer>
+        <FilterItem>
+          <Select
+            value={categoryDoodle}
+            onChange={e => handleChangeCategory(e)}
+          >
+            <Select.Option value="">Todas as categorias</Select.Option>
+            <Select.Option value="empresa">empresa</Select.Option>
+            <Select.Option value="teste">teste</Select.Option>
+            <Select.Option value="venturus">venturus</Select.Option>
+          </Select>
+        </FilterItem>
+
+        <FilterItem>
           <Input
             name="name"
             placeholder="Digite o nome"
             value={nameDoodle}
             onChange={val => handleChangeName(val)}
           />
-        </Form.FormItem>
-      </Form>
+        </FilterItem>
+      </FilterContainer>
+
       <CardsContainer>
         {filteredDoodles?.map(copyPasta => (
           <CopyPasta key={copyPasta.id} copyPasta={copyPasta} />
