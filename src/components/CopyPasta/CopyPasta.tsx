@@ -58,8 +58,8 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
 
       {categoriesSplitted.length > 0 && categoriesSplitted[0] !== '' && (
         <Tag.Tags margin="1rem 0">
-          {categoriesSplitted.map((category: string) => (
-            <Tag text={category} />
+          {categoriesSplitted.map((category: string, index: number) => (
+            <Tag key={index} text={category} />
           ))}
         </Tag.Tags>
       )}
