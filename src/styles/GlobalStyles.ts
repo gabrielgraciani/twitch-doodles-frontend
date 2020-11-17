@@ -23,7 +23,7 @@ export default createGlobalStyle`
     width:100%;
   }
 
-  *, button, input {
+  *, button, input, select {
     border: 0;
     outline: 0;
     font-family: 'Roboto', sans-serif;

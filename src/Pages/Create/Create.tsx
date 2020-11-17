@@ -85,7 +85,6 @@ const Create = (): React.ReactElement => {
   };
 
   const handleAddCategory = (val: string) => {
-    console.log('aqui');
     if (val !== '') {
       const allCategories =
         categories !== ''

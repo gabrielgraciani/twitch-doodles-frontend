@@ -19,6 +19,7 @@ const Doodles = (): React.ReactElement => {
   const [nameDoodle, setNameDoodle] = useState('');
   const [categoryDoodle, setCategoryDoodle] = useState('');
   const [filteredDoodles, setFilteredDoodles] = useState(copyPastas);
+  const [allFilters, setAllFilters] = useState<string[]>([]);
 
   const handleChangeName = (val: string) => {
     setNameDoodle(val);
@@ -42,6 +43,25 @@ const Doodles = (): React.ReactElement => {
     setFilteredDoodles(filtered);
   }, [copyPastas, nameDoodle, categoryDoodle]);
 
+  useEffect(() => {
+    const tempAllFilters: string[] = [];
+    copyPastas?.forEach(item => {
+      const categoriesSplitted = item.categories.split(',');
+
+      categoriesSplitted.forEach(category => {
+        const existCategory = tempAllFilters.find(
+          (findCategory: string) =>
+            findCategory.toLowerCase() === category.toLowerCase(),
+        );
+        if (category && !existCategory) {
+          tempAllFilters.push(category.toLowerCase());
+        }
+      });
+    });
+
+    setAllFilters(tempAllFilters);
+  }, [copyPastas]);
+
   return (
     <Container>
       <FilterContainer>
@@ -51,9 +71,11 @@ const Doodles = (): React.ReactElement => {
             onChange={e => handleChangeCategory(e)}
           >
             <Select.Option value="">Todas as categorias</Select.Option>
-            <Select.Option value="empresa">empresa</Select.Option>
-            <Select.Option value="teste">teste</Select.Option>
-            <Select.Option value="venturus">venturus</Select.Option>
+            {allFilters.map(filter => (
+              <Select.Option value={filter} key={filter}>
+                {filter}
+              </Select.Option>
+            ))}
           </Select>
         </FilterItem>
 

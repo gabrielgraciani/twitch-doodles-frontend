@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const SelectContainer = styled.select`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: normal;
   width: 100%;
-  font-weight: 700;
   color: ${props => props.theme.colors.primary};
-  padding: 1.2rem 2.5rem 1.2rem 0.8rem;
+  padding: 1rem 2.5rem 1rem 0.8rem;
   box-sizing: border-box;
   margin: 0;
   border: 0.1rem solid ${props => props.theme.colors.inputBorderColor};
