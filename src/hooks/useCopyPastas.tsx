@@ -9,7 +9,7 @@ const fetchCopyPastas = async (): Promise<CopyPasta[]> => {
 };
 
 export default function useCopyPastas(): QueryResult<CopyPasta[]> {
-  return useQuery('copyPastas2', fetchCopyPastas, {
+  return useQuery('copyPastas', fetchCopyPastas, {
     refetchOnWindowFocus: false,
   });
 }
