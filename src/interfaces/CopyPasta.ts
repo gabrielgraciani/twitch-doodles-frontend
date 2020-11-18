@@ -4,4 +4,5 @@ export default interface CopyPasta {
   content: string;
   categories: string;
   date: Date;
+  likes: number;
 }

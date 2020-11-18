@@ -8,24 +8,25 @@ const StyledCopyPasta = styled.div`
   padding: 1rem 1.5rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
   user-select: none;
   margin-bottom: 1.5rem;
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
-
-  &:hover {
-    transform: translateY(-0.7rem);
-    cursor: pointer;
-    box-shadow: 0 0 1rem -0.5rem ${props => props.theme.colors.purpleLight};
-  }
 `;
 
 const CopyPastaHeader = styled.div`
   display: flex;
   font-size: 1.5rem;
   font-weight: 600;
+  flex-direction: column;
+`;
+
+const CopyPastaLikeContainer = styled.div`
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const CopyPastaContent = styled.div`
@@ -61,6 +62,7 @@ const StyledCopyToClipboard = styled.div`
   opacity: 0;
   transition: all 0.3s ease;
   transform: translateY(100%);
+  cursor: pointer;
 
   &.active {
     opacity: 1;
@@ -73,7 +75,6 @@ const CopyPastaDate = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
   font-size: 1.2rem;
   color: ${props => props.theme.colors.secundary};
 `;
@@ -81,6 +82,7 @@ const CopyPastaDate = styled.div`
 export {
   StyledCopyPasta,
   CopyPastaHeader,
+  CopyPastaLikeContainer,
   CopyPastaContent,
   UserName,
   CopyPastaFooter,

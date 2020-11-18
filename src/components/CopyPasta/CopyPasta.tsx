@@ -8,9 +8,12 @@ import { Tag } from '../Tag';
 
 import { CopyPastaProps } from './CopyPasta.types';
 
+import api from '../../services/api';
+
 import {
   StyledCopyPasta,
   CopyPastaHeader,
+  CopyPastaLikeContainer,
   CopyPastaContent,
   CopyPastaFooter,
   UserName,
@@ -42,13 +45,38 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     locale: language === 'br' ? ptBR : enUS,
   });
 
+  const handleLike = async (id: string) => {
+    const response = await api.post(`/copypastas/like/${id}`);
+    console.log('response', response);
+    if (response.status === 200) {
+      // eslint-disable-next-line no-param-reassign
+      copyPasta.likes = response.data.likes;
+    }
+  };
+
+  const handleUnlike = async (id: string) => {
+    const response = await api.post(`/copypastas/unlike/${id}`);
+    console.log('response', response);
+    if (response.status === 200) {
+      // eslint-disable-next-line no-param-reassign
+      copyPasta.likes = response.data.likes;
+    }
+  };
+
   return (
     <StyledCopyPasta
       onMouseEnter={handleChangeActiveCopyToClipboard}
       onMouseLeave={handleChangeActiveCopyToClipboard}
-      onClick={() => handleCopyToClipboard(copyPasta.content)}
     >
       <CopyPastaHeader>
+        <CopyPastaLikeContainer>
+          <button type="button" onClick={() => handleLike(copyPasta.id)}>
+            curtir
+          </button>
+          <button type="button" onClick={() => handleUnlike(copyPasta.id)}>
+            descurtir
+          </button>
+        </CopyPastaLikeContainer>
         {copyPasta.name ? copyPasta.name : t('copyPasta.name')}
       </CopyPastaHeader>
       <CopyPastaContent>
@@ -65,12 +93,14 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       )}
 
       <CopyPastaFooter>
-        {t('copyPasta.posted')}
+        {copyPasta.likes}
+        pessoas acharam este copyPasta útil
         <CopyPastaDate>{date}</CopyPastaDate>
       </CopyPastaFooter>
 
       <StyledCopyToClipboard
         className={isActiveCopyToClipboard ? 'active' : ''}
+        onClick={() => handleCopyToClipboard(copyPasta.content)}
       >
         {isCopyingToClipboard
           ? t('copyPasta.copiedToClipboard')
