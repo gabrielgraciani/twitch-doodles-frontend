@@ -8,7 +8,11 @@ import { Tag } from '../Tag';
 
 import { CopyPastaProps } from './CopyPasta.types';
 
-import api from '../../services/api';
+import CopyPasta from '../../interfaces/CopyPasta';
+import {
+  useLikeCopyPasta,
+  useUnlikeCopyPasta,
+} from '../../hooks/useCopyPastaActions';
 
 import {
   StyledCopyPasta,
@@ -25,6 +29,9 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const language = localStorage.getItem('language');
+
+  const [likeCopyPasta] = useLikeCopyPasta();
+  const [unlikeCopyPasta] = useUnlikeCopyPasta();
 
   const { t } = useTranslation();
 
@@ -45,22 +52,12 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     locale: language === 'br' ? ptBR : enUS,
   });
 
-  const handleLike = async (id: string) => {
-    const response = await api.post(`/copypastas/like/${id}`);
-    console.log('response', response);
-    if (response.status === 200) {
-      // eslint-disable-next-line no-param-reassign
-      copyPasta.likes = response.data.likes;
-    }
+  const handleLike = async (value: CopyPasta) => {
+    likeCopyPasta(value);
   };
 
-  const handleUnlike = async (id: string) => {
-    const response = await api.post(`/copypastas/unlike/${id}`);
-    console.log('response', response);
-    if (response.status === 200) {
-      // eslint-disable-next-line no-param-reassign
-      copyPasta.likes = response.data.likes;
-    }
+  const handleUnlike = async (value: CopyPasta) => {
+    unlikeCopyPasta(value);
   };
 
   return (
@@ -70,10 +67,10 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     >
       <CopyPastaHeader>
         <CopyPastaLikeContainer>
-          <button type="button" onClick={() => handleLike(copyPasta.id)}>
+          <button type="button" onClick={() => handleLike(copyPasta)}>
             curtir
           </button>
-          <button type="button" onClick={() => handleUnlike(copyPasta.id)}>
+          <button type="button" onClick={() => handleUnlike(copyPasta)}>
             descurtir
           </button>
         </CopyPastaLikeContainer>
