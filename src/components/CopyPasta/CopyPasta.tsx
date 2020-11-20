@@ -66,7 +66,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     if (!copyPastaLikedFound) {
       likeCopyPasta(value);
       setLikeActive(true);
-      setCopyPastasLiked([...copyPastasLiked, { ...value, action: 'liked' }]);
+      setCopyPastasLiked([...copyPastasLiked, value]);
     } else {
       unlikeCopyPasta(value);
       setLikeActive(false);

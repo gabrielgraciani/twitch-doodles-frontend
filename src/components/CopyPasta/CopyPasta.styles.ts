@@ -32,7 +32,8 @@ const CopyPastaHeader = styled.div`
 const LikeIcon = styled(FiThumbsUp)<IconProps>`
   cursor: pointer;
   font-size: 2.5rem;
-  fill: ${props => (props.active ? props.theme.colors.purple : 'transparent')};
+  fill: ${props =>
+    props.active ? props.theme.colors.purpleLight : 'transparent'};
 
   position: absolute;
   right: 0;
