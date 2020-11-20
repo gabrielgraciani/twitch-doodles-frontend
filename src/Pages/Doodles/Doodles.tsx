@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { ReactQueryDevtools } from 'react-query-devtools';
+import { useTranslation } from 'react-i18next';
+
 import { CopyPasta } from '../../components/CopyPasta';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
@@ -20,6 +21,8 @@ const Doodles = (): React.ReactElement => {
   const [categoryDoodle, setCategoryDoodle] = useState('');
   const [filteredDoodles, setFilteredDoodles] = useState(copyPastas);
   const [allFilters, setAllFilters] = useState<string[]>([]);
+
+  const { t } = useTranslation();
 
   const handleChangeName = (val: string) => {
     setNameDoodle(val);
@@ -70,7 +73,9 @@ const Doodles = (): React.ReactElement => {
             value={categoryDoodle}
             onChange={e => handleChangeCategory(e)}
           >
-            <Select.Option value="">Todas as categorias</Select.Option>
+            <Select.Option value="">
+              {t('pages.doodles.filters.categories')}
+            </Select.Option>
             {allFilters.map(filter => (
               <Select.Option value={filter} key={filter}>
                 {filter}
@@ -82,7 +87,7 @@ const Doodles = (): React.ReactElement => {
         <FilterItem>
           <Input
             name="name"
-            placeholder="Digite o nome"
+            placeholder={t('pages.doodles.filters.name')}
             value={nameDoodle}
             onChange={val => handleChangeName(val)}
           />

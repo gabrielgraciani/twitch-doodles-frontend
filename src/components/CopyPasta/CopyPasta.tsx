@@ -16,6 +16,8 @@ import {
   StyledCopyPasta,
   CopyPastaHeader,
   CopyPastaLikeContainer,
+  LikeIcon,
+  UnlikeIcon,
   CopyPastaContent,
   CopyPastaFooter,
   UserName,
@@ -26,6 +28,9 @@ import {
 const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
+  const [likeActive, setLikeActive] = useState(false);
+  const [unlikeActive, setUnlikeActive] = useState(false);
+
   const language = localStorage.getItem('language');
 
   const [likeCopyPasta] = useLikeCopyPasta();
@@ -52,10 +57,14 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
 
   const handleLike = async (value: CopyPasta) => {
     likeCopyPasta(value);
+    setLikeActive(true);
+    setUnlikeActive(false);
   };
 
   const handleUnlike = async (value: CopyPasta) => {
     unlikeCopyPasta(value);
+    setUnlikeActive(true);
+    setLikeActive(false);
   };
 
   return (
@@ -65,12 +74,11 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     >
       <CopyPastaHeader>
         <CopyPastaLikeContainer>
-          <button type="button" onClick={() => handleLike(copyPasta)}>
-            curtir
-          </button>
-          <button type="button" onClick={() => handleUnlike(copyPasta)}>
-            descurtir
-          </button>
+          <LikeIcon active={likeActive} onClick={() => handleLike(copyPasta)} />
+          <UnlikeIcon
+            active={unlikeActive}
+            onClick={() => handleUnlike(copyPasta)}
+          />
         </CopyPastaLikeContainer>
         {copyPasta.name ? copyPasta.name : t('copyPasta.name')}
       </CopyPastaHeader>
@@ -88,8 +96,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       )}
 
       <CopyPastaFooter>
-        {copyPasta.likes}
-        pessoas acharam este copyPasta útil
+        {`${copyPasta.likes} ${t('copyPasta.people_helped')}`}
         <CopyPastaDate>{date}</CopyPastaDate>
       </CopyPastaFooter>
 

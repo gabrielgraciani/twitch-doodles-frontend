@@ -32,12 +32,19 @@
       "inputContent": "Doodle's content (optional)",
       "inputCategories": "Doodle's categories (optional) (press ENTER to add)",
       "inputImage": "Choose an image"
+    },
+    "doodles": {
+      "filters": {
+        "categories": "All categories",
+        "name": "Search a name"
+      }
     }
   },
   "copyPasta": {
     "user": "twitchUser",
     "name": "I don't have a name, BibleThump",
     "copyToClipboard": "Copy to clipboard",
-    "copiedToClipboard": "Copied!"
+    "copiedToClipboard": "Copied!",
+    "people_helped": "people found this copyFolder useful"
   }
 }

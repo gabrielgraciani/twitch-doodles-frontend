@@ -32,12 +32,19 @@
       "inputContent": "Conteúdo do desenho",
       "inputCategories": "Categorias do desenho (opcional) (pressione ENTER para adicionar)",
       "inputImage": "Escolha uma imagem"
+    },
+    "doodles": {
+      "filters": {
+        "categories": "Todas as categorias",
+        "name": "Pesquise um nome"
+      }
     }
   },
   "copyPasta": {
     "user": "usuárioTwitch",
     "name": "Eu não tenho um nome, BibleThump",
     "copyToClipboard": "Copiar para a área de Transferência",
-    "copiedToClipboard": "Copiado!"
+    "copiedToClipboard": "Copiado!",
+    "people_helped": "pessoas acharam este copyPasta útil"
   }
 }

@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { FiThumbsUp, FiThumbsDown } from 'react-icons/fi';
+
+interface IconProps {
+  active: boolean;
+}
 
 const StyledCopyPasta = styled.div`
   display: flex;
@@ -27,6 +32,18 @@ const CopyPastaLikeContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+const LikeIcon = styled(FiThumbsUp)<IconProps>`
+  cursor: pointer;
+  font-size: 2.2rem;
+  fill: ${props => (props.active ? props.theme.colors.purple : 'transparent')};
+`;
+
+const UnlikeIcon = styled(FiThumbsDown)<IconProps>`
+  cursor: pointer;
+  font-size: 2.2rem;
+  fill: ${props => (props.active ? props.theme.colors.purple : 'transparent')};
 `;
 
 const CopyPastaContent = styled.div`
@@ -83,6 +100,8 @@ export {
   StyledCopyPasta,
   CopyPastaHeader,
   CopyPastaLikeContainer,
+  LikeIcon,
+  UnlikeIcon,
   CopyPastaContent,
   UserName,
   CopyPastaFooter,
