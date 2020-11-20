@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { format } from 'date-fns';
 import { ptBR, enUS } from 'date-fns/locale';
@@ -11,13 +11,12 @@ import { CopyPastaProps } from './CopyPasta.types';
 import CopyPasta from '../../interfaces/CopyPasta';
 import useLikeCopyPasta from '../../hooks/useLikeCopyPasta';
 import useUnlikeCopyPasta from '../../hooks/useUnlikeCopyPasta';
+import usePersistedState from '../../hooks/usePersistedState';
 
 import {
   StyledCopyPasta,
   CopyPastaHeader,
-  CopyPastaLikeContainer,
   LikeIcon,
-  UnlikeIcon,
   CopyPastaContent,
   CopyPastaFooter,
   UserName,
@@ -29,7 +28,11 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const [likeActive, setLikeActive] = useState(false);
-  const [unlikeActive, setUnlikeActive] = useState(false);
+
+  const [copyPastasLiked, setCopyPastasLiked] = usePersistedState<any>(
+    'copyPastasLiked',
+    [],
+  );
 
   const language = localStorage.getItem('language');
 
@@ -56,16 +59,30 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   });
 
   const handleLike = async (value: CopyPasta) => {
-    likeCopyPasta(value);
-    setLikeActive(true);
-    setUnlikeActive(false);
+    const copyPastaLikedFound = copyPastasLiked.find(
+      (item: CopyPasta) => item.id === value.id,
+    );
+
+    if (!copyPastaLikedFound) {
+      likeCopyPasta(value);
+      setLikeActive(true);
+      setCopyPastasLiked([...copyPastasLiked, { ...value, action: 'liked' }]);
+    } else {
+      unlikeCopyPasta(value);
+      setLikeActive(false);
+      setCopyPastasLiked(
+        copyPastasLiked.filter((item: CopyPasta) => item.id !== value.id),
+      );
+    }
   };
 
-  const handleUnlike = async (value: CopyPasta) => {
-    unlikeCopyPasta(value);
-    setUnlikeActive(true);
-    setLikeActive(false);
-  };
+  useEffect(() => {
+    const copyPastaLikedFound = copyPastasLiked.find(
+      (item: CopyPasta) => item.id === copyPasta.id,
+    );
+
+    if (copyPastaLikedFound) setLikeActive(true);
+  }, [copyPasta, copyPastasLiked]);
 
   return (
     <StyledCopyPasta
@@ -73,15 +90,10 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
       onMouseLeave={handleChangeActiveCopyToClipboard}
     >
       <CopyPastaHeader>
-        <CopyPastaLikeContainer>
-          <LikeIcon active={likeActive} onClick={() => handleLike(copyPasta)} />
-          <UnlikeIcon
-            active={unlikeActive}
-            onClick={() => handleUnlike(copyPasta)}
-          />
-        </CopyPastaLikeContainer>
         {copyPasta.name ? copyPasta.name : t('copyPasta.name')}
+        <LikeIcon active={likeActive} onClick={() => handleLike(copyPasta)} />
       </CopyPastaHeader>
+
       <CopyPastaContent>
         <UserName>{`${t('copyPasta.user')}: `}</UserName>
         {copyPasta.content}
