@@ -9,10 +9,8 @@ import { Tag } from '../Tag';
 import { CopyPastaProps } from './CopyPasta.types';
 
 import CopyPasta from '../../interfaces/CopyPasta';
-import {
-  useLikeCopyPasta,
-  useUnlikeCopyPasta,
-} from '../../hooks/useCopyPastaActions';
+import useLikeCopyPasta from '../../hooks/useLikeCopyPasta';
+import useUnlikeCopyPasta from '../../hooks/useUnlikeCopyPasta';
 
 import {
   StyledCopyPasta,
