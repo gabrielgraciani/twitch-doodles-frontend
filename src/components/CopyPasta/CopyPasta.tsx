@@ -29,7 +29,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const [likeActive, setLikeActive] = useState(false);
 
-  const [copyPastasLiked, setCopyPastasLiked] = usePersistedState<any>(
+  const [copyPastasLiked, setCopyPastasLiked] = usePersistedState<CopyPasta[]>(
     'copyPastasLiked',
     [],
   );
