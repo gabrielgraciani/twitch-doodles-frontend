@@ -5,6 +5,7 @@ import { ptBR, enUS } from 'date-fns/locale';
 
 import CopyToClipboard from '../../utils/CopyToClipboard';
 import { Tag } from '../Tag';
+import { Heart } from '../Heart';
 
 import { CopyPastaProps } from './CopyPasta.types';
 
@@ -16,7 +17,6 @@ import usePersistedState from '../../hooks/usePersistedState';
 import {
   StyledCopyPasta,
   CopyPastaHeader,
-  LikeIcon,
   CopyPastaContent,
   CopyPastaFooter,
   UserName,
@@ -91,7 +91,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     >
       <CopyPastaHeader>
         {copyPasta.name ? copyPasta.name : t('copyPasta.name')}
-        <LikeIcon active={likeActive} onClick={() => handleLike(copyPasta)} />
+        <Heart active={likeActive} onClick={() => handleLike(copyPasta)} />
       </CopyPastaHeader>
 
       <CopyPastaContent>
