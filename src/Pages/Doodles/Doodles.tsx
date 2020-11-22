@@ -20,7 +20,6 @@ const Doodles = (): React.ReactElement => {
 
   const [nameDoodle, setNameDoodle] = useState('');
   const [categoryDoodle, setCategoryDoodle] = useState('');
-  const [dateDoodle, setDateDoodle] = useState('desc');
   const [filteredDoodles, setFilteredDoodles] = useState(copyPastas);
   const [allFilters, setAllFilters] = useState<string[]>([]);
 
@@ -32,12 +31,6 @@ const Doodles = (): React.ReactElement => {
 
   const handleChangeCategory = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategoryDoodle(e.target.value);
-  };
-
-  const handleChangeDate = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDateDoodle(e.target.value);
-
-    setFilteredDoodles(filteredDoodles?.reverse());
   };
 
   useEffect(() => {
@@ -98,17 +91,6 @@ const Doodles = (): React.ReactElement => {
                 {filter}
               </Select.Option>
             ))}
-          </Select>
-        </FilterItem>
-
-        <FilterItem>
-          <Select value={dateDoodle} onChange={e => handleChangeDate(e)}>
-            <Select.Option value="desc">
-              {t('pages.doodles.filters.dateDESC')}
-            </Select.Option>
-            <Select.Option value="asc">
-              {t('pages.doodles.filters.dateASC')}
-            </Select.Option>
           </Select>
         </FilterItem>
       </FilterContainer>

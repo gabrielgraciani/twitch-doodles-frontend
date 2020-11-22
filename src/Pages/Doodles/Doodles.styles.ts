@@ -10,8 +10,8 @@ const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
   justify-content: space-between;
-  grid-row-gap: 2.5rem;
-  grid-column-gap: 3%;
+  grid-row-gap: 2rem;
+  grid-column-gap: 1.5%;
   padding: 2rem 0;
   overflow: hidden;
 `;
