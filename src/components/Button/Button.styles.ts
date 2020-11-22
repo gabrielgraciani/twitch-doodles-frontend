@@ -4,6 +4,7 @@ const StyledButton = styled.button`
   width: auto;
   min-width: 20rem;
   padding: 1rem 1rem;
+  min-height: 4.4rem;
   background: transparent;
   display: flex;
   align-items: center;

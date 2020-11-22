@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Switch } from 'antd';
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import {
+  CloseOutlined,
+  CheckOutlined,
+  LoadingOutlined,
+} from '@ant-design/icons';
 
 import { Input } from '../../components/Input';
 import { TextArea } from '../../components/TextArea';
@@ -44,6 +48,7 @@ const Create = (): React.ReactElement => {
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const [hasContentError, setHasContentError] = useState(false);
   const [hasAsciiContentError, setHasAsciiContentError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { t } = useTranslation();
 
@@ -121,6 +126,8 @@ const Create = (): React.ReactElement => {
         setHasAsciiContentError(true);
       }
     } else {
+      setIsLoading(true);
+
       const response = await api.post('/copypastas', {
         name: nameValue,
         content: isSimpleDoodle ? contentValue : asciiConverted,
@@ -151,6 +158,7 @@ const Create = (): React.ReactElement => {
           description: 'Tente novamente mais tarde',
         });
       }
+      setIsLoading(false);
     }
   };
 
@@ -275,7 +283,9 @@ const Create = (): React.ReactElement => {
           </Form.FormItem>
         )}
 
-        <Button onClick={handleSubmitForm}>{t('pages.create.create')}</Button>
+        <Button onClick={handleSubmitForm}>
+          {isLoading ? <LoadingOutlined size={20} /> : t('pages.create.create')}
+        </Button>
       </Form>
     </Container>
   );
