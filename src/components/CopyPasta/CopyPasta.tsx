@@ -24,7 +24,7 @@ import {
   CopyPastaDate,
 } from './CopyPasta.styles';
 
-const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
+const Card = ({ copyPasta, index }: CopyPastaProps): React.ReactElement => {
   const [isActiveCopyToClipboard, setIsActiveCopyToClipboard] = useState(false);
   const [isCopyingToClipboard, setIsCopyingToClipboard] = useState(false);
   const [likeActive, setLikeActive] = useState(false);
@@ -88,6 +88,7 @@ const Card = ({ copyPasta }: CopyPastaProps): React.ReactElement => {
     <StyledCopyPasta
       onMouseEnter={handleChangeActiveCopyToClipboard}
       onMouseLeave={handleChangeActiveCopyToClipboard}
+      index={index}
     >
       <CopyPastaHeader>
         {copyPasta.name ? copyPasta.name : t('copyPasta.name')}

@@ -101,8 +101,8 @@ const Doodles = (): React.ReactElement => {
         </Loading.Container>
       ) : (
         <CardsContainer>
-          {filteredDoodles?.map(copyPasta => (
-            <CopyPasta key={copyPasta.id} copyPasta={copyPasta} />
+          {filteredDoodles?.map((copyPasta, index) => (
+            <CopyPasta key={copyPasta.id} index={index} copyPasta={copyPasta} />
           ))}
         </CardsContainer>
       )}

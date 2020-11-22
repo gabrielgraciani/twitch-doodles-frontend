@@ -1,6 +1,17 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
-const StyledCopyPasta = styled.div`
+interface ContainerProps {
+  index: number;
+}
+
+const OnLoad = keyframes`
+  to {
+    transform: translateY(0);
+    opacity:1;
+  }
+`;
+
+const StyledCopyPasta = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
   background: ${props => props.theme.colors.cardBackground};
@@ -11,8 +22,11 @@ const StyledCopyPasta = styled.div`
   transition: transform 0.3s ease;
   user-select: none;
   margin-bottom: 1.5rem;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
+  height: fit-content;
+
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: ${OnLoad} 0.5s ease ${props => props.index / 8}s forwards;
 `;
 
 const CopyPastaHeader = styled.div`

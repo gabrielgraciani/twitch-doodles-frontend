@@ -7,11 +7,13 @@ const Container = styled.div`
 `;
 
 const CardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  justify-content: space-between;
+  grid-row-gap: 2.5rem;
+  grid-column-gap: 3%;
   padding: 2rem 0;
-
-  column-count: 3;
-  column-gap: 1.5rem;
-  column-fill: auto;
+  overflow: hidden;
 `;
 
 const FilterContainer = styled.div`
