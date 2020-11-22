@@ -36,7 +36,12 @@
     "doodles": {
       "filters": {
         "categories": "Todas as categorias",
-        "name": "Pesquise um nome"
+        "name": "Pesquise um nome",
+        "dateASC": "Mais velhos",
+        "dateDESC": "Mais recentes",
+        "all": "Todos",
+        "mostLiked": "Mais curtidos",
+        "leastLiked": "Menos curtidos"
       }
     }
   },

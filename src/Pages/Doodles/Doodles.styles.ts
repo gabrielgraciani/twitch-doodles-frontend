@@ -24,9 +24,10 @@ const FilterContainer = styled.div`
 
 const FilterItem = styled.div`
   width: 20rem;
+  margin-right: 1.5rem;
 
   :last-child {
-    margin-left: 1.5rem;
+    margin-right: 0;
   }
 `;
 
