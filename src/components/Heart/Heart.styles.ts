@@ -1,5 +1,4 @@
 import styled, { keyframes, css } from 'styled-components';
-import { ReactComponent as Heart } from '../../assets/images/heart.svg';
 
 interface IconProps {
   active: boolean;
@@ -37,13 +36,13 @@ const contentIcon = css`
   }
 
   #grp1 #oval1 {
-    transform: scale(0) translate(0, -30px);
+    transform: scale(0) translate(0, -3rem);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
 
   #grp1 #oval2 {
-    transform: scale(0) translate(10px, -50px);
+    transform: scale(0) translate(1rem, -5rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -54,12 +53,12 @@ const contentIcon = css`
   }
 
   #grp2 #oval1 {
-    transform: scale(0) translate(30px, -15px);
+    transform: scale(0) translate(3rem, -1.5rem);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
   #grp2 #oval2 {
-    transform: scale(0) translate(60px, -15px);
+    transform: scale(0) translate(6rem, -1.5rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -68,12 +67,12 @@ const contentIcon = css`
     transition: 0.1s all 0.3s;
   }
   #grp3 #oval1 {
-    transform: scale(0) translate(30px, 0px);
+    transform: scale(0) translate(3rem, 0);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
   #grp3 #oval2 {
-    transform: scale(0) translate(60px, 10px);
+    transform: scale(0) translate(6rem, 1rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -82,12 +81,12 @@ const contentIcon = css`
     transition: 0.1s all 0.3s;
   }
   #grp4 #oval1 {
-    transform: scale(0) translate(30px, 15px);
+    transform: scale(0) translate(3rem, 1.5rem);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
   #grp4 #oval2 {
-    transform: scale(0) translate(40px, 50px);
+    transform: scale(0) translate(4rem, 5rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -96,12 +95,12 @@ const contentIcon = css`
     transition: 0.1s all 0.3s;
   }
   #grp5 #oval1 {
-    transform: scale(0) translate(-10px, 20px);
+    transform: scale(0) translate(-1rem, 2rem);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
   #grp5 #oval2 {
-    transform: scale(0) translate(-60px, 30px);
+    transform: scale(0) translate(-6rem, 3rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -110,13 +109,13 @@ const contentIcon = css`
     transition: 0.1s all 0.3s;
   }
   #grp6 #oval1 {
-    transform: scale(0) translate(-30px, 0px);
+    transform: scale(0) translate(-3rem, 0);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
 
   #grp6 #oval2 {
-    transform: scale(0) translate(-60px, -5px);
+    transform: scale(0) translate(-6rem, -0.5rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
@@ -127,19 +126,19 @@ const contentIcon = css`
   }
 
   #grp7 #oval1 {
-    transform: scale(0) translate(-30px, -15px);
+    transform: scale(0) translate(-3rem, -1.5rem);
     transform-origin: 0 0 0;
     transition: 0.5s transform 0.3s;
   }
 
   #grp7 #oval2 {
-    transform: scale(0) translate(-55px, -30px);
+    transform: scale(0) translate(-5.5rem, -3rem);
     transform-origin: 0 0 0;
     transition: 1.5s transform 0.3s;
   }
 `;
 
-const HeartIcon = styled(Heart)<IconProps>`
+const HeartIcon = styled.svg<IconProps>`
   cursor: pointer;
   width: 5rem;
 

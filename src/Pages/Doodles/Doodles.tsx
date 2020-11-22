@@ -16,6 +16,8 @@ import {
 
 const Doodles = (): React.ReactElement => {
   const { data: copyPastas } = useCopyPastas();
+  const teste = useCopyPastas();
+  console.log('teste', teste);
 
   const [nameDoodle, setNameDoodle] = useState('');
   const [categoryDoodle, setCategoryDoodle] = useState('');
