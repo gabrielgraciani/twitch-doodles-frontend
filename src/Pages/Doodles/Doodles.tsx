@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { CopyPasta } from '../../components/CopyPasta';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
+import { Loading } from '../../components/Loading';
 
 import useCopyPastas from '../../hooks/useCopyPastas';
 
@@ -15,9 +16,7 @@ import {
 } from './Doodles.styles';
 
 const Doodles = (): React.ReactElement => {
-  const { data: copyPastas } = useCopyPastas();
-  const teste = useCopyPastas();
-  console.log('teste', teste);
+  const { data: copyPastas, isLoading } = useCopyPastas();
 
   const [nameDoodle, setNameDoodle] = useState('');
   const [categoryDoodle, setCategoryDoodle] = useState('');
@@ -96,11 +95,17 @@ const Doodles = (): React.ReactElement => {
         </FilterItem>
       </FilterContainer>
 
-      <CardsContainer>
-        {filteredDoodles?.map(copyPasta => (
-          <CopyPasta key={copyPasta.id} copyPasta={copyPasta} />
-        ))}
-      </CardsContainer>
+      {isLoading ? (
+        <Loading.Container align="flex-start">
+          <Loading />
+        </Loading.Container>
+      ) : (
+        <CardsContainer>
+          {filteredDoodles?.map(copyPasta => (
+            <CopyPasta key={copyPasta.id} copyPasta={copyPasta} />
+          ))}
+        </CardsContainer>
+      )}
 
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </Container>
