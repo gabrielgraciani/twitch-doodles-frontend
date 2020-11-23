@@ -24,7 +24,7 @@ const StyledCopyPasta = styled.div<ContainerProps>`
   margin-bottom: 1.5rem;
   height: fit-content;
 
-  transform: translateY(-50px);
+  transform: translateY(-5rem);
   opacity: 0;
   animation: ${OnLoad} 0.5s ease ${props => props.index / 8}s forwards;
 `;
