@@ -76,13 +76,7 @@ const Header = (): React.ReactElement => {
 
         <MenuContainer>
           <MenuItem>
-            <Link to="/doodles">{t('header.menu.ascii')}</Link>
-          </MenuItem>
-          <MenuItem>
             <Link to="/create">{t('header.menu.create')}</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/contact">{t('header.menu.contact')}</Link>
           </MenuItem>
 
           <SettingsButton type="button">

@@ -33,7 +33,7 @@ const Item = styled.div`
     width: 0.7rem;
     height: 0.7rem;
     border-radius: 50%;
-    background: #fff;
+    background: ${props => props.theme.colors.primary};
     margin: -0.4rem 0 0 -0.4rem;
   }
 
