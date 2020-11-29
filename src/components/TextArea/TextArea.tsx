@@ -86,6 +86,7 @@ const TextArea = ({
         onClick={() => setIsMouseActive(true)}
         className={containerClasses}
         ref={wrapperRef}
+        contentEditable="true"
       >
         {placeholder && <Label className={labelClasses}>{placeholder}</Label>}
         <StyledTextArea value={value} onChange={handleChange} name={name} />

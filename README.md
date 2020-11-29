@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+<h4 align="center">
+    Uma plataforma online para compartilhar copy pastas da <a href="https://www.twitch.tv">Twitch</a>
+<h4>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-começando">Começando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-licença">Licença</a>
+</p>
 
-## Available Scripts
+## 🚀 Tecnologias
 
-In the project directory, you can run:
+### Front-end
 
-### `yarn start`
+- [ReactJS](https://pt-br.reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [react-icons](https://react-icons.github.io/react-icons/)
+- [React Router DOM](https://reactrouter.com/web/guides/quick-start) - Rotas
+- [Axios](https://github.com/axios/axios) - Facilita no consumo de APIs externas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Back-end
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Você pode encontrar o projeto <a href="https://github.com/gabrielgraciani/twitch-doodles-backend" target="_blank">clicando aqui</a>
 
-### `yarn test`
+## ⌛ Começando
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Em primeiro lugar, você precisa ter o *node* e *yarn* (ou *npm*) instalado em sua máquina.
 
-### `yarn build`
+*Se você decidir usar o npm, não se esqueça de deletar yarn.lock nas pastas*
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Então você pode clonar o repositório.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`git clone https://github.com/gabrielgraciani/twitch-doodles-frontend`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inicie a aplicação.
 
-### `yarn eject`
+1. `cd web`
+2. `yarn ou npm install`
+3. `yarn start ou npm run start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+*Para que a aplicação funcione corretamente, vocë deve iniciar primeiramente o projeto de backend <a href="https://github.com/gabrielgraciani/twitch-doodles-backend" target="_blank">clicando aqui</a>*
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🤔 Como contribuir
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. Faça um fork desse repositório;
+2. Crie uma branch com a sua feature: `git checkout -b minha-feature`;
+3. Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;
+4. Faça push para a sua branch: `git push origin minha-feature`;
+5. Crie um pull request;
+6. Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
-## Learn More
+## 📝 Licença
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Este projeto está sob a licença MIT. Veja a [licença](LICENSE) para mais informações.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
+
+Feito com 💟 por Gabriel Thomaz Graciani 👋 [Fale comigo!](https://www.linkedin.com/in/gabriel-thomaz-graciani-98400b166/)
