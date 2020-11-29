@@ -10,6 +10,11 @@ const CreateHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Title = styled.h1`
@@ -25,6 +30,10 @@ const SimpleDoodle = styled.div`
 
   button {
     margin-left: 2rem;
+  }
+
+  @media (max-width: 500px) {
+    margin-top: 1rem;
   }
 `;
 
@@ -69,6 +78,8 @@ const ChooseImageInput = styled.input`
   left: 2rem;
   font-size: 1.7rem;
   color: ${props => props.theme.colors.secundary};
+
+  opacity: 0;
 `;
 
 const InputTreshold = styled.input`

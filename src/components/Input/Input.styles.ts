@@ -33,6 +33,10 @@ const StyledInput = styled.input`
     box-shadow: 0 0 0 100rem ${props => props.theme.colors.background} inset;
     color: ${props => props.theme.colors.primary};
   }
+
+  @media (max-width: 500px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Label = styled.label`
@@ -57,6 +61,10 @@ const Label = styled.label`
   }
   &.hasError {
     color: ${props => props.theme.colors.inputError};
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1.3rem;
   }
 `;
 

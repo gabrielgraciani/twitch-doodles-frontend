@@ -14,6 +14,11 @@ const CardsContainer = styled.div`
   grid-column-gap: 1.5%;
   padding: 2rem 0;
   overflow: hidden;
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 50rem));
+    justify-content: center;
+  }
 `;
 
 const FilterContainer = styled.div`

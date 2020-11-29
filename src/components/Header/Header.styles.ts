@@ -36,6 +36,10 @@ const Container = styled.div`
 const SiteName = styled.h4`
   color: ${props => props.theme.colors.purple};
   font-size: 2rem;
+
+  @media (max-width: 800px) {
+    font-size: 1.7rem;
+  }
 `;
 
 const MenuContainer = styled.ul`
@@ -63,6 +67,11 @@ const MenuItem = styled.li`
 
   a {
     padding: 1rem 0;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
+    margin-right: 1rem;
   }
 `;
 
