@@ -72,7 +72,7 @@ const Doodles = (): React.ReactElement => {
         <FilterItem>
           <Input
             name="name"
-            placeholder={t('pages.doodles.filters.name')}
+            placeholder={t('pages.home.filters.name')}
             value={nameDoodle}
             onChange={val => handleChangeName(val)}
           />
@@ -84,7 +84,7 @@ const Doodles = (): React.ReactElement => {
             onChange={e => handleChangeCategory(e)}
           >
             <Select.Option value="">
-              {t('pages.doodles.filters.categories')}
+              {t('pages.home.filters.categories')}
             </Select.Option>
             {allFilters.map(filter => (
               <Select.Option value={filter} key={filter}>

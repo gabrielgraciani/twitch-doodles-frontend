@@ -18,9 +18,6 @@
     "createdBy": "Criado por Gabriel Thomaz Graciani"
   },
   "pages": {
-    "home": {
-      "title": "pagina inicial"
-    },
     "create": {
       "title": "Crie um novo desenho",
       "simpleDoodle": "Desenho simples",
@@ -33,15 +30,10 @@
       "inputCategories": "Categorias do desenho (opcional) (pressione ENTER para adicionar)",
       "inputImage": "Escolha uma imagem"
     },
-    "doodles": {
+    "home": {
       "filters": {
         "categories": "Todas as categorias",
-        "name": "Pesquise um nome",
-        "dateASC": "Mais velhos",
-        "dateDESC": "Mais recentes",
-        "all": "Todos",
-        "mostLiked": "Mais curtidos",
-        "leastLiked": "Menos curtidos"
+        "name": "Pesquise um nome"
       }
     }
   },

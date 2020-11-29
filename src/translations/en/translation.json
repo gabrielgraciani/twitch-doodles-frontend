@@ -18,9 +18,6 @@
     "createdBy": "Created by Gabriel Thomaz Graciani"
   },
   "pages": {
-    "home": {
-      "title": "initial page"
-    },
     "create": {
       "title": "Create a new Doodle",
       "simpleDoodle": "Simple doodle",
@@ -33,15 +30,10 @@
       "inputCategories": "Doodle's categories (optional) (press ENTER to add)",
       "inputImage": "Choose an image"
     },
-    "doodles": {
+    "home": {
       "filters": {
         "categories": "All categories",
-        "name": "Search a name",
-        "dateASC": "Older",
-        "dateDESC": "Newer",
-        "all": "All",
-        "mostLiked": "Most liked",
-        "leastLiked": "Least liked"
+        "name": "Search a name"
       }
     }
   },
