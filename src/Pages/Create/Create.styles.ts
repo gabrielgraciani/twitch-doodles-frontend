@@ -80,6 +80,7 @@ const ChooseImageInput = styled.input`
   color: ${props => props.theme.colors.secundary};
 
   opacity: 0;
+  display: none;
 `;
 
 const InputTreshold = styled.input`
