@@ -1,13 +1,16 @@
-<h4 align="center">
-    Uma plataforma online para compartilhar copy pastas da <a href="https://www.twitch.tv">Twitch</a>
-<h4>
-
 <p align="center">
+    <a href="#-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-começando">Começando</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-licença">Licença</a>
 </p>
+
+## 💻 Sobre
+
+- Uma plataforma online para compartilhar copy pastas da <a href="https://www.twitch.tv">Twitch</a>
+ - Você pode acessar ele online disponibilizado neste link: https://twitchdoodles.now.sh
+
 
 ## 🚀 Tecnologias
 
