@@ -34,7 +34,8 @@
       "filters": {
         "categories": "All categories",
         "name": "Search a name"
-      }
+      },
+      "noRegister": "There is no doodles to copy... BibleThump"
     }
   },
   "copyPasta": {

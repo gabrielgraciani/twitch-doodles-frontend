@@ -31,4 +31,10 @@ const FilterItem = styled.div`
   }
 `;
 
-export { Container, CardsContainer, FilterContainer, FilterItem };
+const NoRegister = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 3rem;
+`;
+
+export { Container, CardsContainer, FilterContainer, FilterItem, NoRegister };

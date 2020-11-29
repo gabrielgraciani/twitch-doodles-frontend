@@ -13,6 +13,7 @@ import {
   CardsContainer,
   FilterContainer,
   FilterItem,
+  NoRegister,
 } from './Home.styles';
 
 const Doodles = (): React.ReactElement => {
@@ -100,11 +101,21 @@ const Doodles = (): React.ReactElement => {
           <Loading />
         </Loading.Container>
       ) : (
-        <CardsContainer>
-          {filteredDoodles?.map((copyPasta, index) => (
-            <CopyPasta key={copyPasta.id} index={index} copyPasta={copyPasta} />
-          ))}
-        </CardsContainer>
+        <>
+          {filteredDoodles && filteredDoodles?.length > 0 ? (
+            <CardsContainer>
+              {filteredDoodles?.map((copyPasta, index) => (
+                <CopyPasta
+                  key={copyPasta.id}
+                  index={index}
+                  copyPasta={copyPasta}
+                />
+              ))}
+            </CardsContainer>
+          ) : (
+            <NoRegister>{t('pages.home.noRegister')}</NoRegister>
+          )}
+        </>
       )}
     </Container>
   );

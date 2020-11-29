@@ -34,7 +34,8 @@
       "filters": {
         "categories": "Todas as categorias",
         "name": "Pesquise um nome"
-      }
+      },
+      "noRegister": "Não há Desenhos para copiar... BibleThump"
     }
   },
   "copyPasta": {
